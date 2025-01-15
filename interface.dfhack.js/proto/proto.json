@@ -1,0 +1,4600 @@
+{
+  "nested": {
+    "AdventureControl": {
+      "options": {
+        "optimize_for": "LITE_RUNTIME"
+      },
+      "nested": {
+        "AdvmodeMenu": {
+          "values": {
+            "Default": 0,
+            "Look": 1,
+            "ConversationAddress": 2,
+            "ConversationSelect": 3,
+            "ConversationSpeak": 4,
+            "Inventory": 5,
+            "Drop": 6,
+            "ThrowItem": 7,
+            "Wear": 8,
+            "Remove": 9,
+            "Interact": 10,
+            "Put": 11,
+            "PutContainer": 12,
+            "Eat": 13,
+            "ThrowAim": 14,
+            "Fire": 15,
+            "Get": 16,
+            "Unk17": 17,
+            "CombatPrefs": 18,
+            "Companions": 19,
+            "MovementPrefs": 20,
+            "SpeedPrefs": 21,
+            "InteractAction": 22,
+            "MoveCarefully": 23,
+            "Announcements": 24,
+            "UseBuilding": 25,
+            "Travel": 26,
+            "Unk27": 27,
+            "Unk28": 28,
+            "SleepConfirm": 29,
+            "SelectInteractionTarget": 30,
+            "Unk31": 31,
+            "Unk32": 32,
+            "FallAction": 33,
+            "ViewTracks": 34,
+            "Jump": 35,
+            "Unk36": 36,
+            "AttackConfirm": 37,
+            "AttackType": 38,
+            "AttackBodypart": 39,
+            "AttackStrike": 40,
+            "Unk41": 41,
+            "Unk42": 42,
+            "DodgeDirection": 43,
+            "Unk44": 44,
+            "Unk45": 45,
+            "Build": 46
+          }
+        },
+        "CarefulMovementType": {
+          "values": {
+            "DEFAULT_MOVEMENT": 0,
+            "RELEASE_ITEM_HOLD": 1,
+            "RELEASE_TILE_HOLD": 2,
+            "ATTACK_CREATURE": 3,
+            "HOLD_TILE": 4,
+            "MOVE": 5,
+            "CLIMB": 6,
+            "HOLD_ITEM": 7,
+            "BUILDING_INTERACT": 8,
+            "ITEM_INTERACT": 9,
+            "ITEM_INTERACT_GUIDE": 10,
+            "ITEM_INTERACT_RIDE": 11,
+            "ITEM_INTERACT_PUSH": 12
+          }
+        },
+        "MiscMoveType": {
+          "values": {
+            "SET_CLIMB": 0,
+            "SET_STAND": 1,
+            "SET_CANCEL": 2
+          }
+        },
+        "MoveCommandParams": {
+          "fields": {
+            "direction": {
+              "type": "RemoteFortressReader.Coord",
+              "id": 1
+            }
+          }
+        },
+        "MovementOption": {
+          "fields": {
+            "dest": {
+              "type": "RemoteFortressReader.Coord",
+              "id": 1
+            },
+            "source": {
+              "type": "RemoteFortressReader.Coord",
+              "id": 2
+            },
+            "grab": {
+              "type": "RemoteFortressReader.Coord",
+              "id": 3
+            },
+            "movementType": {
+              "type": "CarefulMovementType",
+              "id": 4
+            }
+          }
+        },
+        "MenuContents": {
+          "fields": {
+            "currentMenu": {
+              "type": "AdvmodeMenu",
+              "id": 1
+            },
+            "movements": {
+              "rule": "repeated",
+              "type": "MovementOption",
+              "id": 2
+            }
+          }
+        },
+        "MiscMoveParams": {
+          "fields": {
+            "type": {
+              "type": "MiscMoveType",
+              "id": 1
+            }
+          }
+        }
+      }
+    },
+    "RemoteFortressReader": {
+      "options": {
+        "optimize_for": "LITE_RUNTIME"
+      },
+      "nested": {
+        "TiletypeShape": {
+          "values": {
+            "NO_SHAPE": -1,
+            "EMPTY": 0,
+            "FLOOR": 1,
+            "BOULDER": 2,
+            "PEBBLES": 3,
+            "WALL": 4,
+            "FORTIFICATION": 5,
+            "STAIR_UP": 6,
+            "STAIR_DOWN": 7,
+            "STAIR_UPDOWN": 8,
+            "RAMP": 9,
+            "RAMP_TOP": 10,
+            "BROOK_BED": 11,
+            "BROOK_TOP": 12,
+            "TREE_SHAPE": 13,
+            "SAPLING": 14,
+            "SHRUB": 15,
+            "ENDLESS_PIT": 16,
+            "BRANCH": 17,
+            "TRUNK_BRANCH": 18,
+            "TWIG": 19
+          }
+        },
+        "TiletypeSpecial": {
+          "values": {
+            "NO_SPECIAL": -1,
+            "NORMAL": 0,
+            "RIVER_SOURCE": 1,
+            "WATERFALL": 2,
+            "SMOOTH": 3,
+            "FURROWED": 4,
+            "WET": 5,
+            "DEAD": 6,
+            "WORN_1": 7,
+            "WORN_2": 8,
+            "WORN_3": 9,
+            "TRACK": 10,
+            "SMOOTH_DEAD": 11
+          }
+        },
+        "TiletypeMaterial": {
+          "values": {
+            "NO_MATERIAL": -1,
+            "AIR": 0,
+            "SOIL": 1,
+            "STONE": 2,
+            "FEATURE": 3,
+            "LAVA_STONE": 4,
+            "MINERAL": 5,
+            "FROZEN_LIQUID": 6,
+            "CONSTRUCTION": 7,
+            "GRASS_LIGHT": 8,
+            "GRASS_DARK": 9,
+            "GRASS_DRY": 10,
+            "GRASS_DEAD": 11,
+            "PLANT": 12,
+            "HFS": 13,
+            "CAMPFIRE": 14,
+            "FIRE": 15,
+            "ASHES": 16,
+            "MAGMA": 17,
+            "DRIFTWOOD": 18,
+            "POOL": 19,
+            "BROOK": 20,
+            "RIVER": 21,
+            "ROOT": 22,
+            "TREE_MATERIAL": 23,
+            "MUSHROOM": 24,
+            "UNDERWORLD_GATE": 25
+          }
+        },
+        "TiletypeVariant": {
+          "values": {
+            "NO_VARIANT": -1,
+            "VAR_1": 0,
+            "VAR_2": 1,
+            "VAR_3": 2,
+            "VAR_4": 3
+          }
+        },
+        "WorldPoles": {
+          "values": {
+            "NO_POLES": 0,
+            "NORTH_POLE": 1,
+            "SOUTH_POLE": 2,
+            "BOTH_POLES": 3
+          }
+        },
+        "BuildingDirection": {
+          "values": {
+            "NORTH": 0,
+            "EAST": 1,
+            "SOUTH": 2,
+            "WEST": 3,
+            "NONE": 4
+          }
+        },
+        "TileDigDesignation": {
+          "values": {
+            "NO_DIG": 0,
+            "DEFAULT_DIG": 1,
+            "UP_DOWN_STAIR_DIG": 2,
+            "CHANNEL_DIG": 3,
+            "RAMP_DIG": 4,
+            "DOWN_STAIR_DIG": 5,
+            "UP_STAIR_DIG": 6
+          }
+        },
+        "HairStyle": {
+          "values": {
+            "UNKEMPT": -1,
+            "NEATLY_COMBED": 0,
+            "BRAIDED": 1,
+            "DOUBLE_BRAID": 2,
+            "PONY_TAILS": 3,
+            "CLEAN_SHAVEN": 4
+          }
+        },
+        "InventoryMode": {
+          "values": {
+            "Hauled": 0,
+            "Weapon": 1,
+            "Worn": 2,
+            "Piercing": 3,
+            "Flask": 4,
+            "WrappedAround": 5,
+            "StuckIn": 6,
+            "InMouth": 7,
+            "Pet": 8,
+            "SewnInto": 9,
+            "Strapped": 10
+          }
+        },
+        "ArmorLayer": {
+          "values": {
+            "LAYER_UNDER": 0,
+            "LAYER_OVER": 1,
+            "LAYER_ARMOR": 2,
+            "LAYER_COVER": 3
+          }
+        },
+        "Coord": {
+          "fields": {
+            "x": {
+              "type": "int32",
+              "id": 1
+            },
+            "y": {
+              "type": "int32",
+              "id": 2
+            },
+            "z": {
+              "type": "int32",
+              "id": 3
+            }
+          }
+        },
+        "Tiletype": {
+          "fields": {
+            "id": {
+              "rule": "required",
+              "type": "int32",
+              "id": 1
+            },
+            "name": {
+              "type": "string",
+              "id": 2
+            },
+            "caption": {
+              "type": "string",
+              "id": 3
+            },
+            "shape": {
+              "type": "TiletypeShape",
+              "id": 4
+            },
+            "special": {
+              "type": "TiletypeSpecial",
+              "id": 5
+            },
+            "material": {
+              "type": "TiletypeMaterial",
+              "id": 6
+            },
+            "variant": {
+              "type": "TiletypeVariant",
+              "id": 7
+            },
+            "direction": {
+              "type": "string",
+              "id": 8
+            }
+          }
+        },
+        "TiletypeList": {
+          "fields": {
+            "tiletypeList": {
+              "rule": "repeated",
+              "type": "Tiletype",
+              "id": 1
+            }
+          }
+        },
+        "BuildingExtents": {
+          "fields": {
+            "posX": {
+              "rule": "required",
+              "type": "int32",
+              "id": 1
+            },
+            "posY": {
+              "rule": "required",
+              "type": "int32",
+              "id": 2
+            },
+            "width": {
+              "rule": "required",
+              "type": "int32",
+              "id": 3
+            },
+            "height": {
+              "rule": "required",
+              "type": "int32",
+              "id": 4
+            },
+            "extents": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 5,
+              "options": {
+                "packed": false
+              }
+            }
+          }
+        },
+        "BuildingItem": {
+          "fields": {
+            "item": {
+              "type": "Item",
+              "id": 1
+            },
+            "mode": {
+              "type": "int32",
+              "id": 2
+            }
+          }
+        },
+        "BuildingInstance": {
+          "fields": {
+            "index": {
+              "rule": "required",
+              "type": "int32",
+              "id": 1
+            },
+            "posXMin": {
+              "type": "int32",
+              "id": 2
+            },
+            "posYMin": {
+              "type": "int32",
+              "id": 3
+            },
+            "posZMin": {
+              "type": "int32",
+              "id": 4
+            },
+            "posXMax": {
+              "type": "int32",
+              "id": 5
+            },
+            "posYMax": {
+              "type": "int32",
+              "id": 6
+            },
+            "posZMax": {
+              "type": "int32",
+              "id": 7
+            },
+            "buildingType": {
+              "type": "BuildingType",
+              "id": 8
+            },
+            "material": {
+              "type": "MatPair",
+              "id": 9
+            },
+            "buildingFlags": {
+              "type": "uint32",
+              "id": 10
+            },
+            "isRoom": {
+              "type": "bool",
+              "id": 11
+            },
+            "room": {
+              "type": "BuildingExtents",
+              "id": 12
+            },
+            "direction": {
+              "type": "BuildingDirection",
+              "id": 13
+            },
+            "items": {
+              "rule": "repeated",
+              "type": "BuildingItem",
+              "id": 14
+            },
+            "active": {
+              "type": "int32",
+              "id": 15
+            }
+          }
+        },
+        "RiverEdge": {
+          "fields": {
+            "minPos": {
+              "type": "int32",
+              "id": 1
+            },
+            "maxPos": {
+              "type": "int32",
+              "id": 2
+            },
+            "active": {
+              "type": "int32",
+              "id": 3
+            },
+            "elevation": {
+              "type": "int32",
+              "id": 4
+            }
+          }
+        },
+        "RiverTile": {
+          "fields": {
+            "north": {
+              "type": "RiverEdge",
+              "id": 1
+            },
+            "south": {
+              "type": "RiverEdge",
+              "id": 2
+            },
+            "east": {
+              "type": "RiverEdge",
+              "id": 3
+            },
+            "west": {
+              "type": "RiverEdge",
+              "id": 4
+            }
+          }
+        },
+        "MatterState": {
+          "values": {
+            "Solid": 0,
+            "Liquid": 1,
+            "Gas": 2,
+            "Powder": 3,
+            "Paste": 4,
+            "Pressed": 5
+          }
+        },
+        "Spatter": {
+          "fields": {
+            "material": {
+              "type": "MatPair",
+              "id": 1
+            },
+            "amount": {
+              "type": "int32",
+              "id": 2
+            },
+            "state": {
+              "type": "MatterState",
+              "id": 3
+            },
+            "item": {
+              "type": "MatPair",
+              "id": 4
+            }
+          }
+        },
+        "SpatterPile": {
+          "fields": {
+            "spatters": {
+              "rule": "repeated",
+              "type": "Spatter",
+              "id": 1
+            }
+          }
+        },
+        "Item": {
+          "fields": {
+            "id": {
+              "type": "int32",
+              "id": 1
+            },
+            "pos": {
+              "type": "Coord",
+              "id": 2
+            },
+            "flags1": {
+              "type": "uint32",
+              "id": 3
+            },
+            "flags2": {
+              "type": "uint32",
+              "id": 4
+            },
+            "type": {
+              "type": "MatPair",
+              "id": 5
+            },
+            "material": {
+              "type": "MatPair",
+              "id": 6
+            },
+            "dye": {
+              "type": "ColorDefinition",
+              "id": 7
+            },
+            "stackSize": {
+              "type": "int32",
+              "id": 8
+            },
+            "subposX": {
+              "type": "float",
+              "id": 9
+            },
+            "subposY": {
+              "type": "float",
+              "id": 10
+            },
+            "subposZ": {
+              "type": "float",
+              "id": 11
+            },
+            "projectile": {
+              "type": "bool",
+              "id": 12
+            },
+            "velocityX": {
+              "type": "float",
+              "id": 13
+            },
+            "velocityY": {
+              "type": "float",
+              "id": 14
+            },
+            "velocityZ": {
+              "type": "float",
+              "id": 15
+            },
+            "volume": {
+              "type": "int32",
+              "id": 16
+            },
+            "improvements": {
+              "rule": "repeated",
+              "type": "ItemImprovement",
+              "id": 17
+            },
+            "image": {
+              "type": "ArtImage",
+              "id": 18
+            }
+          }
+        },
+        "PlantTile": {
+          "fields": {
+            "trunk": {
+              "type": "bool",
+              "id": 1
+            },
+            "connectionEast": {
+              "type": "bool",
+              "id": 2
+            },
+            "connectionSouth": {
+              "type": "bool",
+              "id": 3
+            },
+            "connectionWest": {
+              "type": "bool",
+              "id": 4
+            },
+            "connectionNorth": {
+              "type": "bool",
+              "id": 5
+            },
+            "branches": {
+              "type": "bool",
+              "id": 6
+            },
+            "twigs": {
+              "type": "bool",
+              "id": 7
+            },
+            "tileType": {
+              "type": "TiletypeSpecial",
+              "id": 8
+            }
+          }
+        },
+        "TreeInfo": {
+          "fields": {
+            "size": {
+              "type": "Coord",
+              "id": 1
+            },
+            "tiles": {
+              "rule": "repeated",
+              "type": "PlantTile",
+              "id": 2
+            }
+          }
+        },
+        "PlantInstance": {
+          "fields": {
+            "plantType": {
+              "type": "int32",
+              "id": 1
+            },
+            "pos": {
+              "type": "Coord",
+              "id": 2
+            },
+            "treeInfo": {
+              "type": "TreeInfo",
+              "id": 3
+            }
+          }
+        },
+        "MapBlock": {
+          "fields": {
+            "mapX": {
+              "rule": "required",
+              "type": "int32",
+              "id": 1
+            },
+            "mapY": {
+              "rule": "required",
+              "type": "int32",
+              "id": 2
+            },
+            "mapZ": {
+              "rule": "required",
+              "type": "int32",
+              "id": 3
+            },
+            "tiles": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 4,
+              "options": {
+                "packed": false
+              }
+            },
+            "materials": {
+              "rule": "repeated",
+              "type": "MatPair",
+              "id": 5
+            },
+            "layerMaterials": {
+              "rule": "repeated",
+              "type": "MatPair",
+              "id": 6
+            },
+            "veinMaterials": {
+              "rule": "repeated",
+              "type": "MatPair",
+              "id": 7
+            },
+            "baseMaterials": {
+              "rule": "repeated",
+              "type": "MatPair",
+              "id": 8
+            },
+            "magma": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 9,
+              "options": {
+                "packed": false
+              }
+            },
+            "water": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 10,
+              "options": {
+                "packed": false
+              }
+            },
+            "hidden": {
+              "rule": "repeated",
+              "type": "bool",
+              "id": 11,
+              "options": {
+                "packed": false
+              }
+            },
+            "light": {
+              "rule": "repeated",
+              "type": "bool",
+              "id": 12,
+              "options": {
+                "packed": false
+              }
+            },
+            "subterranean": {
+              "rule": "repeated",
+              "type": "bool",
+              "id": 13,
+              "options": {
+                "packed": false
+              }
+            },
+            "outside": {
+              "rule": "repeated",
+              "type": "bool",
+              "id": 14,
+              "options": {
+                "packed": false
+              }
+            },
+            "aquifer": {
+              "rule": "repeated",
+              "type": "bool",
+              "id": 15,
+              "options": {
+                "packed": false
+              }
+            },
+            "waterStagnant": {
+              "rule": "repeated",
+              "type": "bool",
+              "id": 16,
+              "options": {
+                "packed": false
+              }
+            },
+            "waterSalt": {
+              "rule": "repeated",
+              "type": "bool",
+              "id": 17,
+              "options": {
+                "packed": false
+              }
+            },
+            "constructionItems": {
+              "rule": "repeated",
+              "type": "MatPair",
+              "id": 18
+            },
+            "buildings": {
+              "rule": "repeated",
+              "type": "BuildingInstance",
+              "id": 19
+            },
+            "treePercent": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 20,
+              "options": {
+                "packed": false
+              }
+            },
+            "treeX": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 21,
+              "options": {
+                "packed": false
+              }
+            },
+            "treeY": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 22,
+              "options": {
+                "packed": false
+              }
+            },
+            "treeZ": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 23,
+              "options": {
+                "packed": false
+              }
+            },
+            "tileDigDesignation": {
+              "rule": "repeated",
+              "type": "TileDigDesignation",
+              "id": 24,
+              "options": {
+                "packed": false
+              }
+            },
+            "spatterPile": {
+              "rule": "repeated",
+              "type": "SpatterPile",
+              "id": 25
+            },
+            "items": {
+              "rule": "repeated",
+              "type": "Item",
+              "id": 26
+            },
+            "tileDigDesignationMarker": {
+              "rule": "repeated",
+              "type": "bool",
+              "id": 27,
+              "options": {
+                "packed": false
+              }
+            },
+            "tileDigDesignationAuto": {
+              "rule": "repeated",
+              "type": "bool",
+              "id": 28,
+              "options": {
+                "packed": false
+              }
+            },
+            "grassPercent": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 29,
+              "options": {
+                "packed": false
+              }
+            },
+            "flows": {
+              "rule": "repeated",
+              "type": "FlowInfo",
+              "id": 30
+            }
+          }
+        },
+        "MatPair": {
+          "fields": {
+            "matType": {
+              "rule": "required",
+              "type": "int32",
+              "id": 1
+            },
+            "matIndex": {
+              "rule": "required",
+              "type": "int32",
+              "id": 2
+            }
+          }
+        },
+        "ColorDefinition": {
+          "fields": {
+            "red": {
+              "rule": "required",
+              "type": "int32",
+              "id": 1
+            },
+            "green": {
+              "rule": "required",
+              "type": "int32",
+              "id": 2
+            },
+            "blue": {
+              "rule": "required",
+              "type": "int32",
+              "id": 3
+            }
+          }
+        },
+        "MaterialDefinition": {
+          "fields": {
+            "matPair": {
+              "rule": "required",
+              "type": "MatPair",
+              "id": 1
+            },
+            "id": {
+              "type": "string",
+              "id": 2
+            },
+            "name": {
+              "type": "string",
+              "id": 3
+            },
+            "stateColor": {
+              "type": "ColorDefinition",
+              "id": 4
+            },
+            "instrument": {
+              "type": "ItemdefInstrument.InstrumentDef",
+              "id": 5
+            },
+            "upStep": {
+              "type": "int32",
+              "id": 6
+            },
+            "downStep": {
+              "type": "int32",
+              "id": 7
+            },
+            "layer": {
+              "type": "ArmorLayer",
+              "id": 8
+            }
+          }
+        },
+        "BuildingType": {
+          "fields": {
+            "buildingType": {
+              "rule": "required",
+              "type": "int32",
+              "id": 1
+            },
+            "buildingSubtype": {
+              "rule": "required",
+              "type": "int32",
+              "id": 2
+            },
+            "buildingCustom": {
+              "rule": "required",
+              "type": "int32",
+              "id": 3
+            }
+          }
+        },
+        "BuildingDefinition": {
+          "fields": {
+            "buildingType": {
+              "rule": "required",
+              "type": "BuildingType",
+              "id": 1
+            },
+            "id": {
+              "type": "string",
+              "id": 2
+            },
+            "name": {
+              "type": "string",
+              "id": 3
+            }
+          }
+        },
+        "BuildingList": {
+          "fields": {
+            "buildingList": {
+              "rule": "repeated",
+              "type": "BuildingDefinition",
+              "id": 1
+            }
+          }
+        },
+        "MaterialList": {
+          "fields": {
+            "materialList": {
+              "rule": "repeated",
+              "type": "MaterialDefinition",
+              "id": 1
+            }
+          }
+        },
+        "Hair": {
+          "fields": {
+            "length": {
+              "type": "int32",
+              "id": 1
+            },
+            "style": {
+              "type": "HairStyle",
+              "id": 2
+            }
+          }
+        },
+        "BodySizeInfo": {
+          "fields": {
+            "sizeCur": {
+              "type": "int32",
+              "id": 1
+            },
+            "sizeBase": {
+              "type": "int32",
+              "id": 2
+            },
+            "areaCur": {
+              "type": "int32",
+              "id": 3
+            },
+            "areaBase": {
+              "type": "int32",
+              "id": 4
+            },
+            "lengthCur": {
+              "type": "int32",
+              "id": 5
+            },
+            "lengthBase": {
+              "type": "int32",
+              "id": 6
+            }
+          }
+        },
+        "UnitAppearance": {
+          "fields": {
+            "bodyModifiers": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 1,
+              "options": {
+                "packed": false
+              }
+            },
+            "bpModifiers": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 2,
+              "options": {
+                "packed": false
+              }
+            },
+            "sizeModifier": {
+              "type": "int32",
+              "id": 3
+            },
+            "colors": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 4,
+              "options": {
+                "packed": false
+              }
+            },
+            "hair": {
+              "type": "Hair",
+              "id": 5
+            },
+            "beard": {
+              "type": "Hair",
+              "id": 6
+            },
+            "moustache": {
+              "type": "Hair",
+              "id": 7
+            },
+            "sideburns": {
+              "type": "Hair",
+              "id": 8
+            },
+            "physicalDescription": {
+              "type": "string",
+              "id": 9
+            }
+          }
+        },
+        "InventoryItem": {
+          "fields": {
+            "mode": {
+              "type": "InventoryMode",
+              "id": 1
+            },
+            "item": {
+              "type": "Item",
+              "id": 2
+            },
+            "bodyPartId": {
+              "type": "int32",
+              "id": 3
+            }
+          }
+        },
+        "WoundPart": {
+          "fields": {
+            "globalLayerIdx": {
+              "type": "int32",
+              "id": 1
+            },
+            "bodyPartId": {
+              "type": "int32",
+              "id": 2
+            },
+            "layerIdx": {
+              "type": "int32",
+              "id": 3
+            }
+          }
+        },
+        "UnitWound": {
+          "fields": {
+            "parts": {
+              "rule": "repeated",
+              "type": "WoundPart",
+              "id": 1
+            },
+            "severedPart": {
+              "type": "bool",
+              "id": 2
+            }
+          }
+        },
+        "UnitDefinition": {
+          "fields": {
+            "id": {
+              "rule": "required",
+              "type": "int32",
+              "id": 1
+            },
+            "isValid": {
+              "type": "bool",
+              "id": 2
+            },
+            "posX": {
+              "type": "int32",
+              "id": 3
+            },
+            "posY": {
+              "type": "int32",
+              "id": 4
+            },
+            "posZ": {
+              "type": "int32",
+              "id": 5
+            },
+            "race": {
+              "type": "MatPair",
+              "id": 6
+            },
+            "professionColor": {
+              "type": "ColorDefinition",
+              "id": 7
+            },
+            "flags1": {
+              "type": "uint32",
+              "id": 8
+            },
+            "flags2": {
+              "type": "uint32",
+              "id": 9
+            },
+            "flags3": {
+              "type": "uint32",
+              "id": 10
+            },
+            "isSoldier": {
+              "type": "bool",
+              "id": 11
+            },
+            "sizeInfo": {
+              "type": "BodySizeInfo",
+              "id": 12
+            },
+            "name": {
+              "type": "string",
+              "id": 13
+            },
+            "bloodMax": {
+              "type": "int32",
+              "id": 14
+            },
+            "bloodCount": {
+              "type": "int32",
+              "id": 15
+            },
+            "appearance": {
+              "type": "UnitAppearance",
+              "id": 16
+            },
+            "professionId": {
+              "type": "int32",
+              "id": 17
+            },
+            "noblePositions": {
+              "rule": "repeated",
+              "type": "string",
+              "id": 18
+            },
+            "riderId": {
+              "type": "int32",
+              "id": 19
+            },
+            "inventory": {
+              "rule": "repeated",
+              "type": "InventoryItem",
+              "id": 20
+            },
+            "subposX": {
+              "type": "float",
+              "id": 21
+            },
+            "subposY": {
+              "type": "float",
+              "id": 22
+            },
+            "subposZ": {
+              "type": "float",
+              "id": 23
+            },
+            "facing": {
+              "type": "Coord",
+              "id": 24
+            },
+            "age": {
+              "type": "int32",
+              "id": 25
+            },
+            "wounds": {
+              "rule": "repeated",
+              "type": "UnitWound",
+              "id": 26
+            }
+          }
+        },
+        "UnitList": {
+          "fields": {
+            "creatureList": {
+              "rule": "repeated",
+              "type": "UnitDefinition",
+              "id": 1
+            }
+          }
+        },
+        "BlockRequest": {
+          "fields": {
+            "blocksNeeded": {
+              "type": "int32",
+              "id": 1
+            },
+            "minX": {
+              "type": "int32",
+              "id": 2
+            },
+            "maxX": {
+              "type": "int32",
+              "id": 3
+            },
+            "minY": {
+              "type": "int32",
+              "id": 4
+            },
+            "maxY": {
+              "type": "int32",
+              "id": 5
+            },
+            "minZ": {
+              "type": "int32",
+              "id": 6
+            },
+            "maxZ": {
+              "type": "int32",
+              "id": 7
+            }
+          }
+        },
+        "BlockList": {
+          "fields": {
+            "mapBlocks": {
+              "rule": "repeated",
+              "type": "MapBlock",
+              "id": 1
+            },
+            "mapX": {
+              "type": "int32",
+              "id": 2
+            },
+            "mapY": {
+              "type": "int32",
+              "id": 3
+            },
+            "engravings": {
+              "rule": "repeated",
+              "type": "Engraving",
+              "id": 4
+            },
+            "oceanWaves": {
+              "rule": "repeated",
+              "type": "Wave",
+              "id": 5
+            }
+          }
+        },
+        "PlantDef": {
+          "fields": {
+            "posX": {
+              "rule": "required",
+              "type": "int32",
+              "id": 1
+            },
+            "posY": {
+              "rule": "required",
+              "type": "int32",
+              "id": 2
+            },
+            "posZ": {
+              "rule": "required",
+              "type": "int32",
+              "id": 3
+            },
+            "index": {
+              "rule": "required",
+              "type": "int32",
+              "id": 4
+            }
+          }
+        },
+        "PlantList": {
+          "fields": {
+            "plantList": {
+              "rule": "repeated",
+              "type": "PlantDef",
+              "id": 1
+            }
+          }
+        },
+        "ViewInfo": {
+          "fields": {
+            "viewPosX": {
+              "type": "int32",
+              "id": 1
+            },
+            "viewPosY": {
+              "type": "int32",
+              "id": 2
+            },
+            "viewPosZ": {
+              "type": "int32",
+              "id": 3
+            },
+            "viewSizeX": {
+              "type": "int32",
+              "id": 4
+            },
+            "viewSizeY": {
+              "type": "int32",
+              "id": 5
+            },
+            "cursorPosX": {
+              "type": "int32",
+              "id": 6
+            },
+            "cursorPosY": {
+              "type": "int32",
+              "id": 7
+            },
+            "cursorPosZ": {
+              "type": "int32",
+              "id": 8
+            },
+            "followUnitId": {
+              "type": "int32",
+              "id": 9,
+              "options": {
+                "default": -1
+              }
+            },
+            "followItemId": {
+              "type": "int32",
+              "id": 10,
+              "options": {
+                "default": -1
+              }
+            }
+          }
+        },
+        "MapInfo": {
+          "fields": {
+            "blockSizeX": {
+              "type": "int32",
+              "id": 1
+            },
+            "blockSizeY": {
+              "type": "int32",
+              "id": 2
+            },
+            "blockSizeZ": {
+              "type": "int32",
+              "id": 3
+            },
+            "blockPosX": {
+              "type": "int32",
+              "id": 4
+            },
+            "blockPosY": {
+              "type": "int32",
+              "id": 5
+            },
+            "blockPosZ": {
+              "type": "int32",
+              "id": 6
+            },
+            "worldName": {
+              "type": "string",
+              "id": 7
+            },
+            "worldNameEnglish": {
+              "type": "string",
+              "id": 8
+            },
+            "saveName": {
+              "type": "string",
+              "id": 9
+            }
+          }
+        },
+        "FrontType": {
+          "values": {
+            "FRONT_NONE": 0,
+            "FRONT_WARM": 1,
+            "FRONT_COLD": 2,
+            "FRONT_OCCLUDED": 3
+          }
+        },
+        "CumulusType": {
+          "values": {
+            "CUMULUS_NONE": 0,
+            "CUMULUS_MEDIUM": 1,
+            "CUMULUS_MULTI": 2,
+            "CUMULUS_NIMBUS": 3
+          }
+        },
+        "StratusType": {
+          "values": {
+            "STRATUS_NONE": 0,
+            "STRATUS_ALTO": 1,
+            "STRATUS_PROPER": 2,
+            "STRATUS_NIMBUS": 3
+          }
+        },
+        "FogType": {
+          "values": {
+            "FOG_NONE": 0,
+            "FOG_MIST": 1,
+            "FOG_NORMAL": 2,
+            "F0G_THICK": 3
+          }
+        },
+        "Cloud": {
+          "fields": {
+            "front": {
+              "type": "FrontType",
+              "id": 1
+            },
+            "cumulus": {
+              "type": "CumulusType",
+              "id": 2
+            },
+            "cirrus": {
+              "type": "bool",
+              "id": 3
+            },
+            "stratus": {
+              "type": "StratusType",
+              "id": 4
+            },
+            "fog": {
+              "type": "FogType",
+              "id": 5
+            }
+          }
+        },
+        "WorldMap": {
+          "fields": {
+            "worldWidth": {
+              "rule": "required",
+              "type": "int32",
+              "id": 1
+            },
+            "worldHeight": {
+              "rule": "required",
+              "type": "int32",
+              "id": 2
+            },
+            "name": {
+              "type": "string",
+              "id": 3
+            },
+            "nameEnglish": {
+              "type": "string",
+              "id": 4
+            },
+            "elevation": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 5,
+              "options": {
+                "packed": false
+              }
+            },
+            "rainfall": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 6,
+              "options": {
+                "packed": false
+              }
+            },
+            "vegetation": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 7,
+              "options": {
+                "packed": false
+              }
+            },
+            "temperature": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 8,
+              "options": {
+                "packed": false
+              }
+            },
+            "evilness": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 9,
+              "options": {
+                "packed": false
+              }
+            },
+            "drainage": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 10,
+              "options": {
+                "packed": false
+              }
+            },
+            "volcanism": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 11,
+              "options": {
+                "packed": false
+              }
+            },
+            "savagery": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 12,
+              "options": {
+                "packed": false
+              }
+            },
+            "clouds": {
+              "rule": "repeated",
+              "type": "Cloud",
+              "id": 13
+            },
+            "salinity": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 14,
+              "options": {
+                "packed": false
+              }
+            },
+            "mapX": {
+              "type": "int32",
+              "id": 15
+            },
+            "mapY": {
+              "type": "int32",
+              "id": 16
+            },
+            "centerX": {
+              "type": "int32",
+              "id": 17
+            },
+            "centerY": {
+              "type": "int32",
+              "id": 18
+            },
+            "centerZ": {
+              "type": "int32",
+              "id": 19
+            },
+            "curYear": {
+              "type": "int32",
+              "id": 20
+            },
+            "curYearTick": {
+              "type": "int32",
+              "id": 21
+            },
+            "worldPoles": {
+              "type": "WorldPoles",
+              "id": 22
+            },
+            "riverTiles": {
+              "rule": "repeated",
+              "type": "RiverTile",
+              "id": 23
+            },
+            "waterElevation": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 24,
+              "options": {
+                "packed": false
+              }
+            },
+            "regionTiles": {
+              "rule": "repeated",
+              "type": "RegionTile",
+              "id": 25
+            }
+          }
+        },
+        "SiteRealizationBuildingWall": {
+          "fields": {
+            "startX": {
+              "type": "int32",
+              "id": 1
+            },
+            "startY": {
+              "type": "int32",
+              "id": 2
+            },
+            "startZ": {
+              "type": "int32",
+              "id": 3
+            },
+            "endX": {
+              "type": "int32",
+              "id": 4
+            },
+            "endY": {
+              "type": "int32",
+              "id": 5
+            },
+            "endZ": {
+              "type": "int32",
+              "id": 6
+            }
+          }
+        },
+        "SiteRealizationBuildingTower": {
+          "fields": {
+            "roofZ": {
+              "type": "int32",
+              "id": 1
+            },
+            "round": {
+              "type": "bool",
+              "id": 2
+            },
+            "goblin": {
+              "type": "bool",
+              "id": 3
+            }
+          }
+        },
+        "TrenchSpoke": {
+          "fields": {
+            "moundStart": {
+              "type": "int32",
+              "id": 1
+            },
+            "trenchStart": {
+              "type": "int32",
+              "id": 2
+            },
+            "trenchEnd": {
+              "type": "int32",
+              "id": 3
+            },
+            "moundEnd": {
+              "type": "int32",
+              "id": 4
+            }
+          }
+        },
+        "SiteRealizationBuildingTrenches": {
+          "fields": {
+            "spokes": {
+              "rule": "repeated",
+              "type": "TrenchSpoke",
+              "id": 1
+            }
+          }
+        },
+        "SiteRealizationBuilding": {
+          "fields": {
+            "id": {
+              "type": "int32",
+              "id": 1
+            },
+            "minX": {
+              "type": "int32",
+              "id": 3
+            },
+            "minY": {
+              "type": "int32",
+              "id": 4
+            },
+            "maxX": {
+              "type": "int32",
+              "id": 5
+            },
+            "maxY": {
+              "type": "int32",
+              "id": 6
+            },
+            "material": {
+              "type": "MatPair",
+              "id": 7
+            },
+            "wallInfo": {
+              "type": "SiteRealizationBuildingWall",
+              "id": 8
+            },
+            "towerInfo": {
+              "type": "SiteRealizationBuildingTower",
+              "id": 9
+            },
+            "trenchInfo": {
+              "type": "SiteRealizationBuildingTrenches",
+              "id": 10
+            },
+            "type": {
+              "type": "int32",
+              "id": 11
+            }
+          }
+        },
+        "RegionTile": {
+          "fields": {
+            "elevation": {
+              "type": "int32",
+              "id": 1
+            },
+            "rainfall": {
+              "type": "int32",
+              "id": 2
+            },
+            "vegetation": {
+              "type": "int32",
+              "id": 3
+            },
+            "temperature": {
+              "type": "int32",
+              "id": 4
+            },
+            "evilness": {
+              "type": "int32",
+              "id": 5
+            },
+            "drainage": {
+              "type": "int32",
+              "id": 6
+            },
+            "volcanism": {
+              "type": "int32",
+              "id": 7
+            },
+            "savagery": {
+              "type": "int32",
+              "id": 8
+            },
+            "salinity": {
+              "type": "int32",
+              "id": 9
+            },
+            "riverTiles": {
+              "type": "RiverTile",
+              "id": 10
+            },
+            "waterElevation": {
+              "type": "int32",
+              "id": 11
+            },
+            "surfaceMaterial": {
+              "type": "MatPair",
+              "id": 12
+            },
+            "plantMaterials": {
+              "rule": "repeated",
+              "type": "MatPair",
+              "id": 13
+            },
+            "buildings": {
+              "rule": "repeated",
+              "type": "SiteRealizationBuilding",
+              "id": 14
+            },
+            "stoneMaterials": {
+              "rule": "repeated",
+              "type": "MatPair",
+              "id": 15
+            },
+            "treeMaterials": {
+              "rule": "repeated",
+              "type": "MatPair",
+              "id": 16
+            },
+            "snow": {
+              "type": "int32",
+              "id": 17
+            }
+          }
+        },
+        "RegionMap": {
+          "fields": {
+            "mapX": {
+              "type": "int32",
+              "id": 1
+            },
+            "mapY": {
+              "type": "int32",
+              "id": 2
+            },
+            "name": {
+              "type": "string",
+              "id": 3
+            },
+            "nameEnglish": {
+              "type": "string",
+              "id": 4
+            },
+            "tiles": {
+              "rule": "repeated",
+              "type": "RegionTile",
+              "id": 5
+            }
+          }
+        },
+        "RegionMaps": {
+          "fields": {
+            "worldMaps": {
+              "rule": "repeated",
+              "type": "WorldMap",
+              "id": 1
+            },
+            "regionMaps": {
+              "rule": "repeated",
+              "type": "RegionMap",
+              "id": 2
+            }
+          }
+        },
+        "PatternType": {
+          "values": {
+            "MONOTONE": 0,
+            "STRIPES": 1,
+            "IRIS_EYE": 2,
+            "SPOTS": 3,
+            "PUPIL_EYE": 4,
+            "MOTTLED": 5
+          }
+        },
+        "PatternDescriptor": {
+          "fields": {
+            "id": {
+              "type": "string",
+              "id": 1
+            },
+            "colors": {
+              "rule": "repeated",
+              "type": "ColorDefinition",
+              "id": 2
+            },
+            "pattern": {
+              "type": "PatternType",
+              "id": 3
+            }
+          }
+        },
+        "ColorModifierRaw": {
+          "fields": {
+            "patterns": {
+              "rule": "repeated",
+              "type": "PatternDescriptor",
+              "id": 1
+            },
+            "bodyPartId": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 2,
+              "options": {
+                "packed": false
+              }
+            },
+            "tissueLayerId": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 3,
+              "options": {
+                "packed": false
+              }
+            },
+            "startDate": {
+              "type": "int32",
+              "id": 4
+            },
+            "endDate": {
+              "type": "int32",
+              "id": 5
+            },
+            "part": {
+              "type": "string",
+              "id": 6
+            }
+          }
+        },
+        "BodyPartLayerRaw": {
+          "fields": {
+            "layerName": {
+              "type": "string",
+              "id": 1
+            },
+            "tissueId": {
+              "type": "int32",
+              "id": 2
+            },
+            "layerDepth": {
+              "type": "int32",
+              "id": 3
+            },
+            "bpModifiers": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 4,
+              "options": {
+                "packed": false
+              }
+            }
+          }
+        },
+        "BodyPartRaw": {
+          "fields": {
+            "token": {
+              "type": "string",
+              "id": 1
+            },
+            "category": {
+              "type": "string",
+              "id": 2
+            },
+            "parent": {
+              "type": "int32",
+              "id": 3
+            },
+            "flags": {
+              "rule": "repeated",
+              "type": "bool",
+              "id": 4,
+              "options": {
+                "packed": false
+              }
+            },
+            "layers": {
+              "rule": "repeated",
+              "type": "BodyPartLayerRaw",
+              "id": 5
+            },
+            "relsize": {
+              "type": "int32",
+              "id": 6
+            }
+          }
+        },
+        "BpAppearanceModifier": {
+          "fields": {
+            "type": {
+              "type": "string",
+              "id": 1
+            },
+            "modMin": {
+              "type": "int32",
+              "id": 2
+            },
+            "modMax": {
+              "type": "int32",
+              "id": 3
+            }
+          }
+        },
+        "TissueRaw": {
+          "fields": {
+            "id": {
+              "type": "string",
+              "id": 1
+            },
+            "name": {
+              "type": "string",
+              "id": 2
+            },
+            "material": {
+              "type": "MatPair",
+              "id": 3
+            },
+            "subordinateToTissue": {
+              "type": "string",
+              "id": 4
+            }
+          }
+        },
+        "CasteRaw": {
+          "fields": {
+            "index": {
+              "type": "int32",
+              "id": 1
+            },
+            "casteId": {
+              "type": "string",
+              "id": 2
+            },
+            "casteName": {
+              "rule": "repeated",
+              "type": "string",
+              "id": 3
+            },
+            "babyName": {
+              "rule": "repeated",
+              "type": "string",
+              "id": 4
+            },
+            "childName": {
+              "rule": "repeated",
+              "type": "string",
+              "id": 5
+            },
+            "gender": {
+              "type": "int32",
+              "id": 6
+            },
+            "bodyParts": {
+              "rule": "repeated",
+              "type": "BodyPartRaw",
+              "id": 7
+            },
+            "totalRelsize": {
+              "type": "int32",
+              "id": 8
+            },
+            "modifiers": {
+              "rule": "repeated",
+              "type": "BpAppearanceModifier",
+              "id": 9
+            },
+            "modifierIdx": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 10,
+              "options": {
+                "packed": false
+              }
+            },
+            "partIdx": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 11,
+              "options": {
+                "packed": false
+              }
+            },
+            "layerIdx": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 12,
+              "options": {
+                "packed": false
+              }
+            },
+            "bodyAppearanceModifiers": {
+              "rule": "repeated",
+              "type": "BpAppearanceModifier",
+              "id": 13
+            },
+            "colorModifiers": {
+              "rule": "repeated",
+              "type": "ColorModifierRaw",
+              "id": 14
+            },
+            "description": {
+              "type": "string",
+              "id": 15
+            },
+            "adultSize": {
+              "type": "int32",
+              "id": 16
+            }
+          }
+        },
+        "CreatureRaw": {
+          "fields": {
+            "index": {
+              "type": "int32",
+              "id": 1
+            },
+            "creatureId": {
+              "type": "string",
+              "id": 2
+            },
+            "name": {
+              "rule": "repeated",
+              "type": "string",
+              "id": 3
+            },
+            "generalBabyName": {
+              "rule": "repeated",
+              "type": "string",
+              "id": 4
+            },
+            "generalChildName": {
+              "rule": "repeated",
+              "type": "string",
+              "id": 5
+            },
+            "creatureTile": {
+              "type": "int32",
+              "id": 6
+            },
+            "creatureSoldierTile": {
+              "type": "int32",
+              "id": 7
+            },
+            "color": {
+              "type": "ColorDefinition",
+              "id": 8
+            },
+            "adultsize": {
+              "type": "int32",
+              "id": 9
+            },
+            "caste": {
+              "rule": "repeated",
+              "type": "CasteRaw",
+              "id": 10
+            },
+            "tissues": {
+              "rule": "repeated",
+              "type": "TissueRaw",
+              "id": 11
+            },
+            "flags": {
+              "rule": "repeated",
+              "type": "bool",
+              "id": 12,
+              "options": {
+                "packed": false
+              }
+            }
+          }
+        },
+        "CreatureRawList": {
+          "fields": {
+            "creatureRaws": {
+              "rule": "repeated",
+              "type": "CreatureRaw",
+              "id": 1
+            }
+          }
+        },
+        "Army": {
+          "fields": {
+            "id": {
+              "type": "int32",
+              "id": 1
+            },
+            "posX": {
+              "type": "int32",
+              "id": 2
+            },
+            "posY": {
+              "type": "int32",
+              "id": 3
+            },
+            "posZ": {
+              "type": "int32",
+              "id": 4
+            },
+            "leader": {
+              "type": "UnitDefinition",
+              "id": 5
+            },
+            "members": {
+              "rule": "repeated",
+              "type": "UnitDefinition",
+              "id": 6
+            },
+            "flags": {
+              "type": "uint32",
+              "id": 7
+            }
+          }
+        },
+        "ArmyList": {
+          "fields": {
+            "armies": {
+              "rule": "repeated",
+              "type": "Army",
+              "id": 1
+            }
+          }
+        },
+        "GrowthPrint": {
+          "fields": {
+            "priority": {
+              "type": "int32",
+              "id": 1
+            },
+            "color": {
+              "type": "int32",
+              "id": 2
+            },
+            "timingStart": {
+              "type": "int32",
+              "id": 3
+            },
+            "timingEnd": {
+              "type": "int32",
+              "id": 4
+            },
+            "tile": {
+              "type": "int32",
+              "id": 5
+            }
+          }
+        },
+        "TreeGrowth": {
+          "fields": {
+            "index": {
+              "type": "int32",
+              "id": 1
+            },
+            "id": {
+              "type": "string",
+              "id": 2
+            },
+            "name": {
+              "type": "string",
+              "id": 3
+            },
+            "mat": {
+              "type": "MatPair",
+              "id": 4
+            },
+            "prints": {
+              "rule": "repeated",
+              "type": "GrowthPrint",
+              "id": 5
+            },
+            "timingStart": {
+              "type": "int32",
+              "id": 6
+            },
+            "timingEnd": {
+              "type": "int32",
+              "id": 7
+            },
+            "twigs": {
+              "type": "bool",
+              "id": 8
+            },
+            "lightBranches": {
+              "type": "bool",
+              "id": 9
+            },
+            "heavyBranches": {
+              "type": "bool",
+              "id": 10
+            },
+            "trunk": {
+              "type": "bool",
+              "id": 11
+            },
+            "roots": {
+              "type": "bool",
+              "id": 12
+            },
+            "cap": {
+              "type": "bool",
+              "id": 13
+            },
+            "sapling": {
+              "type": "bool",
+              "id": 14
+            },
+            "trunkHeightStart": {
+              "type": "int32",
+              "id": 15
+            },
+            "trunkHeightEnd": {
+              "type": "int32",
+              "id": 16
+            }
+          }
+        },
+        "PlantRaw": {
+          "fields": {
+            "index": {
+              "type": "int32",
+              "id": 1
+            },
+            "id": {
+              "type": "string",
+              "id": 2
+            },
+            "name": {
+              "type": "string",
+              "id": 3
+            },
+            "growths": {
+              "rule": "repeated",
+              "type": "TreeGrowth",
+              "id": 4
+            },
+            "tile": {
+              "type": "int32",
+              "id": 5
+            }
+          }
+        },
+        "PlantRawList": {
+          "fields": {
+            "plantRaws": {
+              "rule": "repeated",
+              "type": "PlantRaw",
+              "id": 1
+            }
+          }
+        },
+        "ScreenTile": {
+          "fields": {
+            "character": {
+              "type": "uint32",
+              "id": 1
+            },
+            "foreground": {
+              "type": "uint32",
+              "id": 2
+            },
+            "background": {
+              "type": "uint32",
+              "id": 3
+            }
+          }
+        },
+        "ScreenCapture": {
+          "fields": {
+            "width": {
+              "type": "uint32",
+              "id": 1
+            },
+            "height": {
+              "type": "uint32",
+              "id": 2
+            },
+            "tiles": {
+              "rule": "repeated",
+              "type": "ScreenTile",
+              "id": 3
+            }
+          }
+        },
+        "KeyboardEvent": {
+          "fields": {
+            "type": {
+              "type": "uint32",
+              "id": 1
+            },
+            "which": {
+              "type": "uint32",
+              "id": 2
+            },
+            "state": {
+              "type": "uint32",
+              "id": 3
+            },
+            "scancode": {
+              "type": "uint32",
+              "id": 4
+            },
+            "sym": {
+              "type": "uint32",
+              "id": 5
+            },
+            "mod": {
+              "type": "uint32",
+              "id": 6
+            },
+            "unicode": {
+              "type": "uint32",
+              "id": 7
+            }
+          }
+        },
+        "DigCommand": {
+          "fields": {
+            "designation": {
+              "type": "TileDigDesignation",
+              "id": 1
+            },
+            "locations": {
+              "rule": "repeated",
+              "type": "Coord",
+              "id": 2
+            }
+          }
+        },
+        "SingleBool": {
+          "fields": {
+            "Value": {
+              "type": "bool",
+              "id": 1
+            }
+          }
+        },
+        "VersionInfo": {
+          "fields": {
+            "dwarfFortressVersion": {
+              "type": "string",
+              "id": 1
+            },
+            "dfhackVersion": {
+              "type": "string",
+              "id": 2
+            },
+            "remoteFortressReaderVersion": {
+              "type": "string",
+              "id": 3
+            }
+          }
+        },
+        "ListRequest": {
+          "fields": {
+            "listStart": {
+              "type": "int32",
+              "id": 1
+            },
+            "listEnd": {
+              "type": "int32",
+              "id": 2
+            }
+          }
+        },
+        "Report": {
+          "fields": {
+            "type": {
+              "type": "int32",
+              "id": 1
+            },
+            "text": {
+              "type": "string",
+              "id": 2
+            },
+            "color": {
+              "type": "ColorDefinition",
+              "id": 3
+            },
+            "duration": {
+              "type": "int32",
+              "id": 4
+            },
+            "continuation": {
+              "type": "bool",
+              "id": 5
+            },
+            "unconscious": {
+              "type": "bool",
+              "id": 6
+            },
+            "announcement": {
+              "type": "bool",
+              "id": 7
+            },
+            "repeatCount": {
+              "type": "int32",
+              "id": 8
+            },
+            "pos": {
+              "type": "Coord",
+              "id": 9
+            },
+            "id": {
+              "type": "int32",
+              "id": 10
+            },
+            "year": {
+              "type": "int32",
+              "id": 11
+            },
+            "time": {
+              "type": "int32",
+              "id": 12
+            }
+          }
+        },
+        "Status": {
+          "fields": {
+            "reports": {
+              "rule": "repeated",
+              "type": "Report",
+              "id": 1
+            }
+          }
+        },
+        "ShapeDescriptior": {
+          "fields": {
+            "id": {
+              "type": "string",
+              "id": 1
+            },
+            "tile": {
+              "type": "int32",
+              "id": 2
+            }
+          }
+        },
+        "Language": {
+          "fields": {
+            "shapes": {
+              "rule": "repeated",
+              "type": "ShapeDescriptior",
+              "id": 1
+            }
+          }
+        },
+        "ItemImprovement": {
+          "fields": {
+            "material": {
+              "type": "MatPair",
+              "id": 1
+            },
+            "shape": {
+              "type": "int32",
+              "id": 3
+            },
+            "specificType": {
+              "type": "int32",
+              "id": 4
+            },
+            "image": {
+              "type": "ArtImage",
+              "id": 5
+            },
+            "type": {
+              "type": "int32",
+              "id": 6
+            }
+          }
+        },
+        "ArtImageElementType": {
+          "values": {
+            "IMAGE_CREATURE": 0,
+            "IMAGE_PLANT": 1,
+            "IMAGE_TREE": 2,
+            "IMAGE_SHAPE": 3,
+            "IMAGE_ITEM": 4
+          }
+        },
+        "ArtImageElement": {
+          "fields": {
+            "count": {
+              "type": "int32",
+              "id": 1
+            },
+            "type": {
+              "type": "ArtImageElementType",
+              "id": 2
+            },
+            "creatureItem": {
+              "type": "MatPair",
+              "id": 3
+            },
+            "material": {
+              "type": "MatPair",
+              "id": 5
+            },
+            "id": {
+              "type": "int32",
+              "id": 6
+            }
+          }
+        },
+        "ArtImagePropertyType": {
+          "values": {
+            "TRANSITIVE_VERB": 0,
+            "INTRANSITIVE_VERB": 1
+          }
+        },
+        "ArtImageProperty": {
+          "fields": {
+            "subject": {
+              "type": "int32",
+              "id": 1
+            },
+            "object": {
+              "type": "int32",
+              "id": 2
+            },
+            "verb": {
+              "type": "ArtImageVerb",
+              "id": 3
+            },
+            "type": {
+              "type": "ArtImagePropertyType",
+              "id": 4
+            }
+          }
+        },
+        "ArtImage": {
+          "fields": {
+            "elements": {
+              "rule": "repeated",
+              "type": "ArtImageElement",
+              "id": 1
+            },
+            "id": {
+              "type": "MatPair",
+              "id": 2
+            },
+            "properties": {
+              "rule": "repeated",
+              "type": "ArtImageProperty",
+              "id": 3
+            }
+          }
+        },
+        "Engraving": {
+          "fields": {
+            "pos": {
+              "type": "Coord",
+              "id": 1
+            },
+            "quality": {
+              "type": "int32",
+              "id": 2
+            },
+            "tile": {
+              "type": "int32",
+              "id": 3
+            },
+            "image": {
+              "type": "ArtImage",
+              "id": 4
+            },
+            "floor": {
+              "type": "bool",
+              "id": 5
+            },
+            "west": {
+              "type": "bool",
+              "id": 6
+            },
+            "east": {
+              "type": "bool",
+              "id": 7
+            },
+            "north": {
+              "type": "bool",
+              "id": 8
+            },
+            "south": {
+              "type": "bool",
+              "id": 9
+            },
+            "hidden": {
+              "type": "bool",
+              "id": 10
+            },
+            "northwest": {
+              "type": "bool",
+              "id": 11
+            },
+            "northeast": {
+              "type": "bool",
+              "id": 12
+            },
+            "southwest": {
+              "type": "bool",
+              "id": 13
+            },
+            "southeast": {
+              "type": "bool",
+              "id": 14
+            }
+          }
+        },
+        "ArtImageVerb": {
+          "values": {
+            "VERB_WITHERING": 0,
+            "VERB_SURROUNDEDBY": 1,
+            "VERB_MASSACRING": 2,
+            "VERB_FIGHTING": 3,
+            "VERB_LABORING": 4,
+            "VERB_GREETING": 5,
+            "VERB_REFUSING": 6,
+            "VERB_SPEAKING": 7,
+            "VERB_EMBRACING": 8,
+            "VERB_STRIKINGDOWN": 9,
+            "VERB_MENACINGPOSE": 10,
+            "VERB_TRAVELING": 11,
+            "VERB_RAISING": 12,
+            "VERB_HIDING": 13,
+            "VERB_LOOKINGCONFUSED": 14,
+            "VERB_LOOKINGTERRIFIED": 15,
+            "VERB_DEVOURING": 16,
+            "VERB_ADMIRING": 17,
+            "VERB_BURNING": 18,
+            "VERB_WEEPING": 19,
+            "VERB_LOOKINGDEJECTED": 20,
+            "VERB_CRINGING": 21,
+            "VERB_SCREAMING": 22,
+            "VERB_SUBMISSIVEGESTURE": 23,
+            "VERB_FETALPOSITION": 24,
+            "VERB_SMEAREDINTOSPIRAL": 25,
+            "VERB_FALLING": 26,
+            "VERB_DEAD": 27,
+            "VERB_LAUGHING": 28,
+            "VERB_LOOKINGOFFENDED": 29,
+            "VERB_BEINGSHOT": 30,
+            "VERB_PLAINTIVEGESTURE": 31,
+            "VERB_MELTING": 32,
+            "VERB_SHOOTING": 33,
+            "VERB_TORTURING": 34,
+            "VERB_COMMITTINGDEPRAVEDACT": 35,
+            "VERB_PRAYING": 36,
+            "VERB_CONTEMPLATING": 37,
+            "VERB_COOKING": 38,
+            "VERB_ENGRAVING": 39,
+            "VERB_PROSTRATING": 40,
+            "VERB_SUFFERING": 41,
+            "VERB_BEINGIMPALED": 42,
+            "VERB_BEINGCONTORTED": 43,
+            "VERB_BEINGFLAYED": 44,
+            "VERB_HANGINGFROM": 45,
+            "VERB_BEINGMUTILATED": 46,
+            "VERB_TRIUMPHANTPOSE": 47
+          }
+        },
+        "FlowType": {
+          "values": {
+            "Miasma": 0,
+            "Steam": 1,
+            "Mist": 2,
+            "MaterialDust": 3,
+            "MagmaMist": 4,
+            "Smoke": 5,
+            "Dragonfire": 6,
+            "Fire": 7,
+            "Web": 8,
+            "MaterialGas": 9,
+            "MaterialVapor": 10,
+            "OceanWave": 11,
+            "SeaFoam": 12,
+            "ItemCloud": 13,
+            "CampFire": -1
+          }
+        },
+        "FlowInfo": {
+          "fields": {
+            "index": {
+              "type": "int32",
+              "id": 1
+            },
+            "type": {
+              "type": "FlowType",
+              "id": 2
+            },
+            "density": {
+              "type": "int32",
+              "id": 3
+            },
+            "pos": {
+              "type": "Coord",
+              "id": 4
+            },
+            "dest": {
+              "type": "Coord",
+              "id": 5
+            },
+            "expanding": {
+              "type": "bool",
+              "id": 6
+            },
+            "reuse": {
+              "type": "bool",
+              "id": 7
+            },
+            "guideId": {
+              "type": "int32",
+              "id": 8
+            },
+            "material": {
+              "type": "MatPair",
+              "id": 9
+            },
+            "item": {
+              "type": "MatPair",
+              "id": 10
+            }
+          }
+        },
+        "Wave": {
+          "fields": {
+            "dest": {
+              "type": "Coord",
+              "id": 1
+            },
+            "pos": {
+              "type": "Coord",
+              "id": 2
+            }
+          }
+        }
+      }
+    },
+    "ItemdefInstrument": {
+      "options": {
+        "optimize_for": "LITE_RUNTIME"
+      },
+      "nested": {
+        "InstrumentFlags": {
+          "fields": {
+            "indefinitePitch": {
+              "type": "bool",
+              "id": 1
+            },
+            "placedAsBuilding": {
+              "type": "bool",
+              "id": 2
+            },
+            "metalMat": {
+              "type": "bool",
+              "id": 3
+            },
+            "stoneMat": {
+              "type": "bool",
+              "id": 4
+            },
+            "woodMat": {
+              "type": "bool",
+              "id": 5
+            },
+            "glassMat": {
+              "type": "bool",
+              "id": 6
+            },
+            "ceramicMat": {
+              "type": "bool",
+              "id": 7
+            },
+            "shellMat": {
+              "type": "bool",
+              "id": 8
+            },
+            "boneMat": {
+              "type": "bool",
+              "id": 9
+            }
+          }
+        },
+        "PitchChoiceType": {
+          "values": {
+            "MEMBRANE_POSITION": 0,
+            "SUBPART_CHOICE": 1,
+            "KEYBOARD": 2,
+            "STOPPING_FRET": 3,
+            "STOPPING_AGAINST_BODY": 4,
+            "STOPPING_HOLE": 5,
+            "STOPPING_HOLE_KEY": 6,
+            "SLIDE": 7,
+            "HARMONIC_SERIES": 8,
+            "VALVE_ROUTES_AIR": 9,
+            "BP_IN_BELL": 10,
+            "FOOT_PEDALS": 11
+          }
+        },
+        "SoundProductionType": {
+          "values": {
+            "PLUCKED_BY_BP": 0,
+            "PLUCKED": 1,
+            "BOWED": 2,
+            "STRUCK_BY_BP": 3,
+            "STRUCK": 4,
+            "VIBRATE_BP_AGAINST_OPENING": 5,
+            "BLOW_AGAINST_FIPPLE": 6,
+            "BLOW_OVER_OPENING_SIDE": 7,
+            "BLOW_OVER_OPENING_END": 8,
+            "BLOW_OVER_SINGLE_REED": 9,
+            "BLOW_OVER_DOUBLE_REED": 10,
+            "BLOW_OVER_FREE_REED": 11,
+            "STRUCK_TOGETHER": 12,
+            "SHAKEN": 13,
+            "SCRAPED": 14,
+            "FRICTION": 15,
+            "RESONATOR": 16,
+            "BAG_OVER_REED": 17,
+            "AIR_OVER_REED": 18,
+            "AIR_OVER_FREE_REED": 19,
+            "AIR_AGAINST_FIPPLE": 20
+          }
+        },
+        "TuningType": {
+          "values": {
+            "PEGS": 0,
+            "ADJUSTABLE_BRIDGES": 1,
+            "CROOKS": 2,
+            "TIGHTENING": 3,
+            "LEVERS": 4
+          }
+        },
+        "InstrumentPiece": {
+          "fields": {
+            "type": {
+              "type": "string",
+              "id": 1
+            },
+            "id": {
+              "type": "string",
+              "id": 2
+            },
+            "name": {
+              "type": "string",
+              "id": 3
+            },
+            "namePlural": {
+              "type": "string",
+              "id": 4
+            }
+          }
+        },
+        "InstrumentRegister": {
+          "fields": {
+            "pitchRangeMin": {
+              "type": "int32",
+              "id": 1
+            },
+            "pitchRangeMax": {
+              "type": "int32",
+              "id": 2
+            }
+          }
+        },
+        "InstrumentDef": {
+          "fields": {
+            "flags": {
+              "type": "InstrumentFlags",
+              "id": 1
+            },
+            "size": {
+              "type": "int32",
+              "id": 2
+            },
+            "value": {
+              "type": "int32",
+              "id": 3
+            },
+            "materialSize": {
+              "type": "int32",
+              "id": 4
+            },
+            "pieces": {
+              "rule": "repeated",
+              "type": "InstrumentPiece",
+              "id": 5
+            },
+            "pitchRangeMin": {
+              "type": "int32",
+              "id": 6
+            },
+            "pitchRangeMax": {
+              "type": "int32",
+              "id": 7
+            },
+            "volumeMbMin": {
+              "type": "int32",
+              "id": 8
+            },
+            "volumeMbMax": {
+              "type": "int32",
+              "id": 9
+            },
+            "soundProduction": {
+              "rule": "repeated",
+              "type": "SoundProductionType",
+              "id": 10,
+              "options": {
+                "packed": false
+              }
+            },
+            "soundProductionParm1": {
+              "rule": "repeated",
+              "type": "string",
+              "id": 11
+            },
+            "soundProductionParm2": {
+              "rule": "repeated",
+              "type": "string",
+              "id": 12
+            },
+            "pitchChoice": {
+              "rule": "repeated",
+              "type": "PitchChoiceType",
+              "id": 13,
+              "options": {
+                "packed": false
+              }
+            },
+            "pitchChoiceParm1": {
+              "rule": "repeated",
+              "type": "string",
+              "id": 14
+            },
+            "pitchChoiceParm2": {
+              "rule": "repeated",
+              "type": "string",
+              "id": 15
+            },
+            "tuning": {
+              "rule": "repeated",
+              "type": "TuningType",
+              "id": 16,
+              "options": {
+                "packed": false
+              }
+            },
+            "tuningParm": {
+              "rule": "repeated",
+              "type": "string",
+              "id": 17
+            },
+            "registers": {
+              "rule": "repeated",
+              "type": "InstrumentRegister",
+              "id": 18
+            },
+            "description": {
+              "type": "string",
+              "id": 19
+            }
+          }
+        }
+      }
+    },
+    "dfproto": {
+      "options": {
+        "optimize_for": "LITE_RUNTIME"
+      },
+      "nested": {
+        "EnumItemName": {
+          "fields": {
+            "value": {
+              "rule": "required",
+              "type": "int32",
+              "id": 1
+            },
+            "name": {
+              "type": "string",
+              "id": 2
+            },
+            "bitSize": {
+              "type": "int32",
+              "id": 3,
+              "options": {
+                "default": 1
+              }
+            }
+          }
+        },
+        "BasicMaterialId": {
+          "fields": {
+            "type": {
+              "rule": "required",
+              "type": "int32",
+              "id": 1
+            },
+            "index": {
+              "rule": "required",
+              "type": "sint32",
+              "id": 2
+            }
+          }
+        },
+        "BasicMaterialInfo": {
+          "fields": {
+            "type": {
+              "rule": "required",
+              "type": "int32",
+              "id": 1
+            },
+            "index": {
+              "rule": "required",
+              "type": "sint32",
+              "id": 2
+            },
+            "token": {
+              "rule": "required",
+              "type": "string",
+              "id": 3
+            },
+            "flags": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 4,
+              "options": {
+                "packed": false
+              }
+            },
+            "subtype": {
+              "type": "int32",
+              "id": 5,
+              "options": {
+                "default": -1
+              }
+            },
+            "creatureId": {
+              "type": "int32",
+              "id": 6,
+              "options": {
+                "default": -1
+              }
+            },
+            "plantId": {
+              "type": "int32",
+              "id": 7,
+              "options": {
+                "default": -1
+              }
+            },
+            "histfigId": {
+              "type": "int32",
+              "id": 8,
+              "options": {
+                "default": -1
+              }
+            },
+            "namePrefix": {
+              "type": "string",
+              "id": 9,
+              "options": {
+                "default": ""
+              }
+            },
+            "stateColor": {
+              "rule": "repeated",
+              "type": "fixed32",
+              "id": 10,
+              "options": {
+                "packed": false
+              }
+            },
+            "stateName": {
+              "rule": "repeated",
+              "type": "string",
+              "id": 11
+            },
+            "stateAdj": {
+              "rule": "repeated",
+              "type": "string",
+              "id": 12
+            },
+            "reactionClass": {
+              "rule": "repeated",
+              "type": "string",
+              "id": 13
+            },
+            "reactionProduct": {
+              "rule": "repeated",
+              "type": "Product",
+              "id": 14
+            },
+            "inorganicFlags": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 15,
+              "options": {
+                "packed": false
+              }
+            }
+          },
+          "nested": {
+            "Product": {
+              "fields": {
+                "id": {
+                  "rule": "required",
+                  "type": "string",
+                  "id": 1
+                },
+                "type": {
+                  "rule": "required",
+                  "type": "int32",
+                  "id": 2
+                },
+                "index": {
+                  "rule": "required",
+                  "type": "sint32",
+                  "id": 3
+                }
+              }
+            }
+          }
+        },
+        "BasicMaterialInfoMask": {
+          "fields": {
+            "states": {
+              "rule": "repeated",
+              "type": "StateType",
+              "id": 1,
+              "options": {
+                "packed": false
+              }
+            },
+            "temperature": {
+              "type": "int32",
+              "id": 4,
+              "options": {
+                "default": 10015
+              }
+            },
+            "flags": {
+              "type": "bool",
+              "id": 2,
+              "options": {
+                "default": false
+              }
+            },
+            "reaction": {
+              "type": "bool",
+              "id": 3,
+              "options": {
+                "default": false
+              }
+            }
+          },
+          "nested": {
+            "StateType": {
+              "values": {
+                "Solid": 0,
+                "Liquid": 1,
+                "Gas": 2,
+                "Powder": 3,
+                "Paste": 4,
+                "Pressed": 5
+              }
+            }
+          }
+        },
+        "JobSkillAttr": {
+          "fields": {
+            "id": {
+              "rule": "required",
+              "type": "int32",
+              "id": 1
+            },
+            "key": {
+              "rule": "required",
+              "type": "string",
+              "id": 2
+            },
+            "caption": {
+              "type": "string",
+              "id": 3
+            },
+            "captionNoun": {
+              "type": "string",
+              "id": 4
+            },
+            "profession": {
+              "type": "int32",
+              "id": 5
+            },
+            "labor": {
+              "type": "int32",
+              "id": 6
+            },
+            "type": {
+              "type": "string",
+              "id": 7
+            }
+          }
+        },
+        "ProfessionAttr": {
+          "fields": {
+            "id": {
+              "rule": "required",
+              "type": "int32",
+              "id": 1
+            },
+            "key": {
+              "rule": "required",
+              "type": "string",
+              "id": 2
+            },
+            "caption": {
+              "type": "string",
+              "id": 3
+            },
+            "military": {
+              "type": "bool",
+              "id": 4
+            },
+            "canAssignLabor": {
+              "type": "bool",
+              "id": 5
+            },
+            "parent": {
+              "type": "int32",
+              "id": 6
+            }
+          }
+        },
+        "UnitLaborAttr": {
+          "fields": {
+            "id": {
+              "rule": "required",
+              "type": "int32",
+              "id": 1
+            },
+            "key": {
+              "rule": "required",
+              "type": "string",
+              "id": 2
+            },
+            "caption": {
+              "type": "string",
+              "id": 3
+            }
+          }
+        },
+        "NameInfo": {
+          "fields": {
+            "firstName": {
+              "type": "string",
+              "id": 1
+            },
+            "nickname": {
+              "type": "string",
+              "id": 2
+            },
+            "languageId": {
+              "type": "int32",
+              "id": 3,
+              "options": {
+                "default": -1
+              }
+            },
+            "lastName": {
+              "type": "string",
+              "id": 4
+            },
+            "englishName": {
+              "type": "string",
+              "id": 5
+            }
+          }
+        },
+        "NameTriple": {
+          "fields": {
+            "normal": {
+              "rule": "required",
+              "type": "string",
+              "id": 1
+            },
+            "plural": {
+              "type": "string",
+              "id": 2
+            },
+            "adjective": {
+              "type": "string",
+              "id": 3
+            }
+          }
+        },
+        "UnitCurseInfo": {
+          "fields": {
+            "addTags1": {
+              "rule": "required",
+              "type": "fixed32",
+              "id": 1
+            },
+            "remTags1": {
+              "rule": "required",
+              "type": "fixed32",
+              "id": 2
+            },
+            "addTags2": {
+              "rule": "required",
+              "type": "fixed32",
+              "id": 3
+            },
+            "remTags2": {
+              "rule": "required",
+              "type": "fixed32",
+              "id": 4
+            },
+            "name": {
+              "type": "NameTriple",
+              "id": 5
+            }
+          }
+        },
+        "SkillInfo": {
+          "fields": {
+            "id": {
+              "rule": "required",
+              "type": "int32",
+              "id": 1
+            },
+            "level": {
+              "rule": "required",
+              "type": "int32",
+              "id": 2
+            },
+            "experience": {
+              "rule": "required",
+              "type": "int32",
+              "id": 3
+            }
+          }
+        },
+        "UnitMiscTrait": {
+          "fields": {
+            "id": {
+              "rule": "required",
+              "type": "int32",
+              "id": 1
+            },
+            "value": {
+              "rule": "required",
+              "type": "int32",
+              "id": 2
+            }
+          }
+        },
+        "BasicUnitInfo": {
+          "fields": {
+            "unitId": {
+              "rule": "required",
+              "type": "int32",
+              "id": 1
+            },
+            "posX": {
+              "rule": "required",
+              "type": "int32",
+              "id": 13
+            },
+            "posY": {
+              "rule": "required",
+              "type": "int32",
+              "id": 14
+            },
+            "posZ": {
+              "rule": "required",
+              "type": "int32",
+              "id": 15
+            },
+            "name": {
+              "type": "NameInfo",
+              "id": 2
+            },
+            "flags1": {
+              "rule": "required",
+              "type": "fixed32",
+              "id": 3
+            },
+            "flags2": {
+              "rule": "required",
+              "type": "fixed32",
+              "id": 4
+            },
+            "flags3": {
+              "rule": "required",
+              "type": "fixed32",
+              "id": 5
+            },
+            "race": {
+              "rule": "required",
+              "type": "int32",
+              "id": 6
+            },
+            "caste": {
+              "rule": "required",
+              "type": "int32",
+              "id": 7
+            },
+            "gender": {
+              "type": "int32",
+              "id": 8,
+              "options": {
+                "default": -1
+              }
+            },
+            "civId": {
+              "type": "int32",
+              "id": 9,
+              "options": {
+                "default": -1
+              }
+            },
+            "histfigId": {
+              "type": "int32",
+              "id": 10,
+              "options": {
+                "default": -1
+              }
+            },
+            "deathId": {
+              "type": "int32",
+              "id": 17,
+              "options": {
+                "default": -1
+              }
+            },
+            "deathFlags": {
+              "type": "uint32",
+              "id": 18
+            },
+            "squadId": {
+              "type": "int32",
+              "id": 19,
+              "options": {
+                "default": -1
+              }
+            },
+            "squadPosition": {
+              "type": "int32",
+              "id": 20,
+              "options": {
+                "default": -1
+              }
+            },
+            "profession": {
+              "type": "int32",
+              "id": 22,
+              "options": {
+                "default": -1
+              }
+            },
+            "customProfession": {
+              "type": "string",
+              "id": 23
+            },
+            "labors": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 11,
+              "options": {
+                "packed": false
+              }
+            },
+            "skills": {
+              "rule": "repeated",
+              "type": "SkillInfo",
+              "id": 12
+            },
+            "miscTraits": {
+              "rule": "repeated",
+              "type": "UnitMiscTrait",
+              "id": 24
+            },
+            "curse": {
+              "type": "UnitCurseInfo",
+              "id": 16
+            },
+            "burrows": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 21,
+              "options": {
+                "packed": false
+              }
+            }
+          }
+        },
+        "BasicUnitInfoMask": {
+          "fields": {
+            "labors": {
+              "type": "bool",
+              "id": 1,
+              "options": {
+                "default": false
+              }
+            },
+            "skills": {
+              "type": "bool",
+              "id": 2,
+              "options": {
+                "default": false
+              }
+            },
+            "profession": {
+              "type": "bool",
+              "id": 3,
+              "options": {
+                "default": false
+              }
+            },
+            "miscTraits": {
+              "type": "bool",
+              "id": 4,
+              "options": {
+                "default": false
+              }
+            }
+          }
+        },
+        "BasicSquadInfo": {
+          "fields": {
+            "squadId": {
+              "rule": "required",
+              "type": "int32",
+              "id": 1
+            },
+            "name": {
+              "type": "NameInfo",
+              "id": 2
+            },
+            "alias": {
+              "type": "string",
+              "id": 3
+            },
+            "members": {
+              "rule": "repeated",
+              "type": "sint32",
+              "id": 4,
+              "options": {
+                "packed": false
+              }
+            }
+          }
+        },
+        "UnitLaborState": {
+          "fields": {
+            "unitId": {
+              "rule": "required",
+              "type": "int32",
+              "id": 1
+            },
+            "labor": {
+              "rule": "required",
+              "type": "int32",
+              "id": 2
+            },
+            "value": {
+              "rule": "required",
+              "type": "bool",
+              "id": 3
+            }
+          }
+        },
+        "GetWorldInfoOut": {
+          "fields": {
+            "mode": {
+              "rule": "required",
+              "type": "Mode",
+              "id": 1
+            },
+            "saveDir": {
+              "rule": "required",
+              "type": "string",
+              "id": 2
+            },
+            "worldName": {
+              "type": "NameInfo",
+              "id": 3
+            },
+            "civId": {
+              "type": "int32",
+              "id": 4
+            },
+            "siteId": {
+              "type": "int32",
+              "id": 5
+            },
+            "groupId": {
+              "type": "int32",
+              "id": 6
+            },
+            "raceId": {
+              "type": "int32",
+              "id": 7
+            },
+            "playerUnitId": {
+              "type": "int32",
+              "id": 8
+            },
+            "playerHistfigId": {
+              "type": "int32",
+              "id": 9
+            },
+            "companionHistfigIds": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 10,
+              "options": {
+                "packed": false
+              }
+            }
+          },
+          "nested": {
+            "Mode": {
+              "values": {
+                "MODE_DWARF": 1,
+                "MODE_ADVENTURE": 2,
+                "MODE_LEGENDS": 3
+              }
+            }
+          }
+        },
+        "ListEnumsOut": {
+          "fields": {
+            "materialFlags": {
+              "rule": "repeated",
+              "type": "EnumItemName",
+              "id": 1
+            },
+            "inorganicFlags": {
+              "rule": "repeated",
+              "type": "EnumItemName",
+              "id": 2
+            },
+            "unitFlags1": {
+              "rule": "repeated",
+              "type": "EnumItemName",
+              "id": 3
+            },
+            "unitFlags2": {
+              "rule": "repeated",
+              "type": "EnumItemName",
+              "id": 4
+            },
+            "unitFlags3": {
+              "rule": "repeated",
+              "type": "EnumItemName",
+              "id": 5
+            },
+            "unitLabor": {
+              "rule": "repeated",
+              "type": "EnumItemName",
+              "id": 6
+            },
+            "jobSkill": {
+              "rule": "repeated",
+              "type": "EnumItemName",
+              "id": 7
+            },
+            "cieAddTagMask1": {
+              "rule": "repeated",
+              "type": "EnumItemName",
+              "id": 8
+            },
+            "cieAddTagMask2": {
+              "rule": "repeated",
+              "type": "EnumItemName",
+              "id": 9
+            },
+            "deathInfoFlags": {
+              "rule": "repeated",
+              "type": "EnumItemName",
+              "id": 10
+            },
+            "profession": {
+              "rule": "repeated",
+              "type": "EnumItemName",
+              "id": 11
+            }
+          }
+        },
+        "ListJobSkillsOut": {
+          "fields": {
+            "skill": {
+              "rule": "repeated",
+              "type": "JobSkillAttr",
+              "id": 1
+            },
+            "profession": {
+              "rule": "repeated",
+              "type": "ProfessionAttr",
+              "id": 2
+            },
+            "labor": {
+              "rule": "repeated",
+              "type": "UnitLaborAttr",
+              "id": 3
+            }
+          }
+        },
+        "ListMaterialsIn": {
+          "fields": {
+            "mask": {
+              "type": "BasicMaterialInfoMask",
+              "id": 1
+            },
+            "idList": {
+              "rule": "repeated",
+              "type": "BasicMaterialId",
+              "id": 2
+            },
+            "builtin": {
+              "type": "bool",
+              "id": 3
+            },
+            "inorganic": {
+              "type": "bool",
+              "id": 4
+            },
+            "creatures": {
+              "type": "bool",
+              "id": 5
+            },
+            "plants": {
+              "type": "bool",
+              "id": 6
+            }
+          }
+        },
+        "ListMaterialsOut": {
+          "fields": {
+            "value": {
+              "rule": "repeated",
+              "type": "BasicMaterialInfo",
+              "id": 1
+            }
+          }
+        },
+        "ListUnitsIn": {
+          "fields": {
+            "mask": {
+              "type": "BasicUnitInfoMask",
+              "id": 1
+            },
+            "idList": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 2,
+              "options": {
+                "packed": false
+              }
+            },
+            "scanAll": {
+              "type": "bool",
+              "id": 5
+            },
+            "race": {
+              "type": "int32",
+              "id": 3
+            },
+            "civId": {
+              "type": "int32",
+              "id": 4
+            },
+            "dead": {
+              "type": "bool",
+              "id": 6
+            },
+            "alive": {
+              "type": "bool",
+              "id": 7
+            },
+            "sane": {
+              "type": "bool",
+              "id": 8
+            }
+          }
+        },
+        "ListUnitsOut": {
+          "fields": {
+            "value": {
+              "rule": "repeated",
+              "type": "BasicUnitInfo",
+              "id": 1
+            }
+          }
+        },
+        "ListSquadsIn": {
+          "fields": {}
+        },
+        "ListSquadsOut": {
+          "fields": {
+            "value": {
+              "rule": "repeated",
+              "type": "BasicSquadInfo",
+              "id": 1
+            }
+          }
+        },
+        "SetUnitLaborsIn": {
+          "fields": {
+            "change": {
+              "rule": "repeated",
+              "type": "UnitLaborState",
+              "id": 1
+            }
+          }
+        },
+        "CoreTextFragment": {
+          "fields": {
+            "text": {
+              "rule": "required",
+              "type": "string",
+              "id": 1
+            },
+            "color": {
+              "type": "Color",
+              "id": 2
+            }
+          },
+          "nested": {
+            "Color": {
+              "values": {
+                "COLOR_BLACK": 0,
+                "COLOR_BLUE": 1,
+                "COLOR_GREEN": 2,
+                "COLOR_CYAN": 3,
+                "COLOR_RED": 4,
+                "COLOR_MAGENTA": 5,
+                "COLOR_BROWN": 6,
+                "COLOR_GREY": 7,
+                "COLOR_DARKGREY": 8,
+                "COLOR_LIGHTBLUE": 9,
+                "COLOR_LIGHTGREEN": 10,
+                "COLOR_LIGHTCYAN": 11,
+                "COLOR_LIGHTRED": 12,
+                "COLOR_LIGHTMAGENTA": 13,
+                "COLOR_YELLOW": 14,
+                "COLOR_WHITE": 15
+              }
+            }
+          }
+        },
+        "CoreTextNotification": {
+          "fields": {
+            "fragments": {
+              "rule": "repeated",
+              "type": "CoreTextFragment",
+              "id": 1
+            }
+          }
+        },
+        "CoreErrorNotification": {
+          "fields": {
+            "code": {
+              "rule": "required",
+              "type": "ErrorCode",
+              "id": 1
+            }
+          },
+          "nested": {
+            "ErrorCode": {
+              "values": {
+                "CR_LINK_FAILURE": -3,
+                "CR_WOULD_BREAK": -2,
+                "CR_NOT_IMPLEMENTED": -1,
+                "CR_OK": 0,
+                "CR_FAILURE": 1,
+                "CR_WRONG_USAGE": 2,
+                "CR_NOT_FOUND": 3
+              }
+            }
+          }
+        },
+        "EmptyMessage": {
+          "fields": {}
+        },
+        "IntMessage": {
+          "fields": {
+            "value": {
+              "rule": "required",
+              "type": "int32",
+              "id": 1
+            }
+          }
+        },
+        "IntListMessage": {
+          "fields": {
+            "value": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 1,
+              "options": {
+                "packed": false
+              }
+            }
+          }
+        },
+        "StringMessage": {
+          "fields": {
+            "value": {
+              "rule": "required",
+              "type": "string",
+              "id": 1
+            }
+          }
+        },
+        "StringListMessage": {
+          "fields": {
+            "value": {
+              "rule": "repeated",
+              "type": "string",
+              "id": 1
+            }
+          }
+        },
+        "CoreBindRequest": {
+          "fields": {
+            "method": {
+              "rule": "required",
+              "type": "string",
+              "id": 1
+            },
+            "inputMsg": {
+              "rule": "required",
+              "type": "string",
+              "id": 2
+            },
+            "outputMsg": {
+              "rule": "required",
+              "type": "string",
+              "id": 3
+            },
+            "plugin": {
+              "type": "string",
+              "id": 4
+            }
+          }
+        },
+        "CoreBindReply": {
+          "fields": {
+            "assignedId": {
+              "rule": "required",
+              "type": "int32",
+              "id": 1
+            }
+          }
+        },
+        "CoreRunCommandRequest": {
+          "fields": {
+            "command": {
+              "rule": "required",
+              "type": "string",
+              "id": 1
+            },
+            "arguments": {
+              "rule": "repeated",
+              "type": "string",
+              "id": 2
+            }
+          }
+        },
+        "CoreRunLuaRequest": {
+          "fields": {
+            "module": {
+              "rule": "required",
+              "type": "string",
+              "id": 1
+            },
+            "function": {
+              "rule": "required",
+              "type": "string",
+              "id": 2
+            },
+            "arguments": {
+              "rule": "repeated",
+              "type": "string",
+              "id": 3
+            }
+          }
+        },
+        "RenameSquadIn": {
+          "fields": {
+            "squadId": {
+              "rule": "required",
+              "type": "int32",
+              "id": 1
+            },
+            "nickname": {
+              "type": "string",
+              "id": 2
+            },
+            "alias": {
+              "type": "string",
+              "id": 3
+            }
+          }
+        },
+        "RenameUnitIn": {
+          "fields": {
+            "unitId": {
+              "rule": "required",
+              "type": "int32",
+              "id": 1
+            },
+            "nickname": {
+              "type": "string",
+              "id": 2
+            },
+            "profession": {
+              "type": "string",
+              "id": 3
+            }
+          }
+        },
+        "RenameBuildingIn": {
+          "fields": {
+            "buildingId": {
+              "rule": "required",
+              "type": "int32",
+              "id": 1
+            },
+            "name": {
+              "type": "string",
+              "id": 2
+            }
+          }
+        }
+      }
+    },
+    "DwarfControl": {
+      "options": {
+        "optimize_for": "LITE_RUNTIME"
+      },
+      "nested": {
+        "BuildCategory": {
+          "values": {
+            "NotCategory": 0,
+            "SiegeEngines": 1,
+            "Traps": 2,
+            "Workshops": 3,
+            "Furnaces": 4,
+            "Constructions": 5,
+            "MachineComponents": 6,
+            "Track": 7
+          }
+        },
+        "MenuAction": {
+          "values": {
+            "MenuNone": 0,
+            "MenuSelect": 1,
+            "MenuCancel": 2,
+            "MenuSelectAll": 3
+          }
+        },
+        "BuildSelectorStage": {
+          "values": {
+            "StageNoMat": 0,
+            "StagePlace": 1,
+            "StageItemSelect": 2
+          }
+        },
+        "SidebarState": {
+          "fields": {
+            "mode": {
+              "type": "proto.enums.ui_sidebar_mode.ui_sidebar_mode",
+              "id": 1
+            },
+            "menuItems": {
+              "rule": "repeated",
+              "type": "MenuItem",
+              "id": 2
+            },
+            "buildSelector": {
+              "type": "BuildSelector",
+              "id": 3
+            }
+          }
+        },
+        "MenuItem": {
+          "fields": {
+            "buildingType": {
+              "type": "RemoteFortressReader.BuildingType",
+              "id": 1
+            },
+            "existingCount": {
+              "type": "int32",
+              "id": 2
+            },
+            "buildCategory": {
+              "type": "BuildCategory",
+              "id": 3
+            }
+          }
+        },
+        "SidebarCommand": {
+          "fields": {
+            "mode": {
+              "type": "proto.enums.ui_sidebar_mode.ui_sidebar_mode",
+              "id": 1
+            },
+            "menuIndex": {
+              "type": "int32",
+              "id": 2
+            },
+            "action": {
+              "type": "MenuAction",
+              "id": 3
+            },
+            "selectionCoord": {
+              "type": "RemoteFortressReader.Coord",
+              "id": 4
+            }
+          }
+        },
+        "BuiildReqChoice": {
+          "fields": {
+            "distance": {
+              "type": "int32",
+              "id": 1
+            },
+            "name": {
+              "type": "string",
+              "id": 2
+            },
+            "numCandidates": {
+              "type": "int32",
+              "id": 3
+            },
+            "usedCount": {
+              "type": "int32",
+              "id": 4
+            }
+          }
+        },
+        "BuildItemReq": {
+          "fields": {
+            "countRequired": {
+              "type": "int32",
+              "id": 2
+            },
+            "countMax": {
+              "type": "int32",
+              "id": 3
+            },
+            "countProvided": {
+              "type": "int32",
+              "id": 4
+            }
+          }
+        },
+        "BuildSelector": {
+          "fields": {
+            "buildingType": {
+              "type": "RemoteFortressReader.BuildingType",
+              "id": 1
+            },
+            "stage": {
+              "type": "BuildSelectorStage",
+              "id": 2
+            },
+            "choices": {
+              "rule": "repeated",
+              "type": "BuiildReqChoice",
+              "id": 3
+            },
+            "selIndex": {
+              "type": "int32",
+              "id": 4
+            },
+            "requirements": {
+              "rule": "repeated",
+              "type": "BuildItemReq",
+              "id": 5
+            },
+            "reqIndex": {
+              "type": "int32",
+              "id": 6
+            },
+            "errors": {
+              "rule": "repeated",
+              "type": "string",
+              "id": 7
+            },
+            "radiusXLow": {
+              "type": "int32",
+              "id": 8
+            },
+            "radiusYLow": {
+              "type": "int32",
+              "id": 9
+            },
+            "radiusXHigh": {
+              "type": "int32",
+              "id": 10
+            },
+            "radiusYHigh": {
+              "type": "int32",
+              "id": 11
+            },
+            "cursor": {
+              "type": "RemoteFortressReader.Coord",
+              "id": 12
+            },
+            "tiles": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 13,
+              "options": {
+                "packed": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "proto": {
+      "nested": {
+        "enums": {
+          "nested": {
+            "ui_sidebar_mode": {
+              "options": {
+                "optimize_for": "LITE_RUNTIME"
+              },
+              "nested": {
+                "ui_sidebar_mode": {
+                  "values": {
+                    "Default": 0,
+                    "Squads": 1,
+                    "DesignateMine": 2,
+                    "DesignateRemoveRamps": 3,
+                    "DesignateUpStair": 4,
+                    "DesignateDownStair": 5,
+                    "DesignateUpDownStair": 6,
+                    "DesignateUpRamp": 7,
+                    "DesignateChannel": 8,
+                    "DesignateGatherPlants": 9,
+                    "DesignateRemoveDesignation": 10,
+                    "DesignateSmooth": 11,
+                    "DesignateCarveTrack": 12,
+                    "DesignateEngrave": 13,
+                    "DesignateCarveFortification": 14,
+                    "Stockpiles": 15,
+                    "Build": 16,
+                    "QueryBuilding": 17,
+                    "Orders": 18,
+                    "OrdersForbid": 19,
+                    "OrdersRefuse": 20,
+                    "OrdersWorkshop": 21,
+                    "OrdersZone": 22,
+                    "BuildingItems": 23,
+                    "ViewUnits": 24,
+                    "LookAround": 25,
+                    "DesignateItemsClaim": 26,
+                    "DesignateItemsForbid": 27,
+                    "DesignateItemsMelt": 28,
+                    "DesignateItemsUnmelt": 29,
+                    "DesignateItemsDump": 30,
+                    "DesignateItemsUndump": 31,
+                    "DesignateItemsHide": 32,
+                    "DesignateItemsUnhide": 33,
+                    "DesignateChopTrees": 34,
+                    "DesignateToggleEngravings": 35,
+                    "DesignateToggleMarker": 36,
+                    "Hotkeys": 37,
+                    "DesignateTrafficHigh": 38,
+                    "DesignateTrafficNormal": 39,
+                    "DesignateTrafficLow": 40,
+                    "DesignateTrafficRestricted": 41,
+                    "Zones": 42,
+                    "ZonesPenInfo": 43,
+                    "ZonesPitInfo": 44,
+                    "ZonesHospitalInfo": 45,
+                    "ZonesGatherInfo": 46,
+                    "DesignateRemoveConstruction": 47,
+                    "DepotAccess": 48,
+                    "NotesPoints": 49,
+                    "NotesRoutes": 50,
+                    "Burrows": 51,
+                    "Hauling": 52,
+                    "ArenaWeather": 53,
+                    "ArenaTrees": 54
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "isoworldremote": {
+      "options": {
+        "optimize_for": "LITE_RUNTIME"
+      },
+      "nested": {
+        "BasicMaterial": {
+          "values": {
+            "AIR": 0,
+            "OTHER": 1,
+            "INORGANIC": 2,
+            "LIQUID": 3,
+            "PLANT": 4,
+            "WOOD": 5
+          }
+        },
+        "LiquidType": {
+          "values": {
+            "ICE": 0,
+            "WATER": 1,
+            "MAGMA": 2
+          }
+        },
+        "BasicShape": {
+          "values": {
+            "NONE": 0,
+            "OPEN": 1,
+            "WALL": 3,
+            "FLOOR": 4,
+            "RAMP_UP": 5,
+            "RAMP_DOWN": 6
+          }
+        },
+        "ColorDefinition": {
+          "fields": {
+            "red": {
+              "rule": "required",
+              "type": "int32",
+              "id": 1
+            },
+            "green": {
+              "rule": "required",
+              "type": "int32",
+              "id": 2
+            },
+            "blue": {
+              "rule": "required",
+              "type": "int32",
+              "id": 3
+            }
+          }
+        },
+        "EmbarkTileLayer": {
+          "fields": {
+            "matTypeTable": {
+              "rule": "repeated",
+              "type": "BasicMaterial",
+              "id": 4
+            },
+            "matSubtypeTable": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 5
+            },
+            "tileShapeTable": {
+              "rule": "repeated",
+              "type": "BasicShape",
+              "id": 6
+            },
+            "tileColorTable": {
+              "rule": "repeated",
+              "type": "ColorDefinition",
+              "id": 7
+            }
+          }
+        },
+        "EmbarkTile": {
+          "fields": {
+            "worldX": {
+              "rule": "required",
+              "type": "int32",
+              "id": 1
+            },
+            "worldY": {
+              "rule": "required",
+              "type": "int32",
+              "id": 2
+            },
+            "worldZ": {
+              "rule": "required",
+              "type": "sint32",
+              "id": 3
+            },
+            "tileLayer": {
+              "rule": "repeated",
+              "type": "EmbarkTileLayer",
+              "id": 4
+            },
+            "currentYear": {
+              "type": "int32",
+              "id": 5
+            },
+            "currentSeason": {
+              "type": "int32",
+              "id": 6
+            },
+            "isValid": {
+              "type": "bool",
+              "id": 7
+            }
+          }
+        },
+        "TileRequest": {
+          "fields": {
+            "wantX": {
+              "type": "int32",
+              "id": 1
+            },
+            "wantY": {
+              "type": "int32",
+              "id": 2
+            }
+          }
+        },
+        "MapRequest": {
+          "fields": {
+            "saveFolder": {
+              "type": "string",
+              "id": 1
+            }
+          }
+        },
+        "MapReply": {
+          "fields": {
+            "available": {
+              "rule": "required",
+              "type": "bool",
+              "id": 1
+            },
+            "regionX": {
+              "type": "int32",
+              "id": 2
+            },
+            "regionY": {
+              "type": "int32",
+              "id": 3
+            },
+            "regionSizeX": {
+              "type": "int32",
+              "id": 4
+            },
+            "regionSizeY": {
+              "type": "int32",
+              "id": 5
+            },
+            "currentYear": {
+              "type": "int32",
+              "id": 6
+            },
+            "currentSeason": {
+              "type": "int32",
+              "id": 7
+            }
+          }
+        },
+        "RawNames": {
+          "fields": {
+            "available": {
+              "rule": "required",
+              "type": "bool",
+              "id": 1
+            },
+            "inorganic": {
+              "rule": "repeated",
+              "type": "string",
+              "id": 2
+            },
+            "organic": {
+              "rule": "repeated",
+              "type": "string",
+              "id": 3
+            }
+          }
+        }
+      }
+    }
+  }
+}
