@@ -23,7 +23,7 @@ export class DFHackInterface {
     };
 
     connect() {
-        this.connected = new Promise((res, rej) => {
+        this.connected = new Promise((res:Function, rej:Function) => {
             this.client = net.createConnection({ port: 5000 }, () => {
                 const magic = 'DFHack?\n';
                 const version = 1;
@@ -53,7 +53,7 @@ export class DFHackInterface {
     }
 
     write(buffer: Buffer): Promise<Buffer | Error> {
-        return new Promise((res, rej) => {
+        return new Promise((res:Function, rej:Function) => {
             let response = Buffer.alloc(0); // Initialize an empty buffer to accumulate the response
 
             const responseId = {

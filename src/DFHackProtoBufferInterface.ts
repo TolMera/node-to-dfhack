@@ -39,15 +39,17 @@ export class DFHackProtoBufferInterface {
         return bindReply.assignedId;
     }
 
-    private async _genericQueryMethod(inType: string, outType: string, method: string, plugin: string, input: unknown = {}) {
+    private async _genericQueryMethod(inType: string, outType: string, method: string, plugin: string, input: unknown = {}):Promise<unknown> {
         const inputMethod = root.lookupType(inType.split('.')[1]);
         const outputMethod = root.lookupType(outType.split('.')[1]);
 
         const methodId = await this.resolveMethodId(method, inType, outType, plugin);
 
+        // @ts-ignore
         const buffer = inputMethod.encode(inputMethod.create(input)).finish();
         const header = this.df.createHeader(methodId, buffer.length);
 
+        // @ts-ignore
         return outputMethod.decode(await this.df.write(Buffer.concat([header, buffer])));
     }
 
@@ -70,6 +72,7 @@ export class DFHackProtoBufferInterface {
         const buffer = inputMethod.encode(inputMethod.create(input)).finish();
         const header = this.df.createHeader(bindMethodId, buffer.length);
 
+        // @ts-ignore
         return outputMethod.decode(await this.df.write(Buffer.concat([header, buffer])));
     }
 
@@ -85,6 +88,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "dfproto";
         const method = "RunCommand";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin, input);
     }
 
@@ -98,6 +102,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "dfproto";
         const method = "CoreSuspend";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin);
     }
 
@@ -111,6 +116,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "dfproto";
         const method = "CoreResume";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin);
     }
 
@@ -127,6 +133,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "dfproto";
         const method = "RunLua";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin, input);
     }
 
@@ -142,6 +149,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "SetPauseState";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin, input);
     }
 
@@ -156,6 +164,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "GetPauseState";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin);
     }
 
@@ -169,6 +178,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "GetGameValidity";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin);
     }
 
@@ -182,6 +192,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "dfproto";
         const method = "GetVersion";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin);
     }
 
@@ -195,6 +206,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "GetVersion";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin);
     }
 
@@ -208,6 +220,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "dfproto";
         const method = "GetDFVersion";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin);
     }
 
@@ -222,6 +235,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "dfproto";
         const method = "ListUnits";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin, input);
     }
 
@@ -235,6 +249,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "dfproto";
         const method = "SetUnitLabors";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin, input);
     }
 
@@ -248,6 +263,7 @@ export class DFHackProtoBufferInterface {
         const plugin = 'dfproto';
         const method = "ListSquads";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin, input);
     }
 
@@ -262,6 +278,7 @@ export class DFHackProtoBufferInterface {
         const plugin = 'RemoteFortressReader';
         const method = "CheckHashes";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin);
     }
 
@@ -275,6 +292,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "CopyScreen";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin);
     }
 
@@ -288,6 +306,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "GetBuildingDefList";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin);
     }
 
@@ -303,6 +322,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "GetCreatureRaws";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin);
     }
 
@@ -317,6 +337,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "GetGrowthList";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin);
     }
 
@@ -331,6 +352,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "MaterialList";
         const method = "GetItemList";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin);
     }
 
@@ -345,6 +367,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "GetLanguage";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin);
     }
 
@@ -359,6 +382,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "GetMapInfo";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin);
     }
 
@@ -373,6 +397,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "GetMaterialList";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin);
     }
 
@@ -387,6 +412,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "GetPlantRaws";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin);
     }
 
@@ -403,6 +429,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "GetRegionMaps";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin);
     }
 
@@ -417,6 +444,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "GetRegionMapsNew";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin);
     }
 
@@ -431,6 +459,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "GetReports";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin);
     }
 
@@ -445,6 +474,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "GetSideMenu";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin);
     }
 
@@ -459,6 +489,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "GetTiletypeList";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin);
     }
 
@@ -473,6 +504,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "GetUnitList";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin);
     }
 
@@ -487,6 +519,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "GetVersionInfo";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin);
     }
 
@@ -501,6 +534,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "GetViewInfo";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin);
     }
 
@@ -515,6 +549,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "dfproto";
         const method = "GetWorldInfo";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin);
     }
 
@@ -529,6 +564,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "GetWorldMap";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin);
     }
 
@@ -543,6 +579,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "GetWorldMapCenter";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin);
     }
 
@@ -557,6 +594,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "GetWorldMapNew";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin);
     }
 
@@ -571,6 +609,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "dfproto";
         const method = "ListEnums";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin);
     }
 
@@ -585,6 +624,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "dfproto";
         const method = "ListJobSkills";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin);
     }
 
@@ -599,6 +639,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "MenuQuery";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin);
     }
 
@@ -613,6 +654,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "ResetMapHashes";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin);
     }
 
@@ -628,6 +670,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "JumpCommand";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin, input);
     }
 
@@ -643,6 +686,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "MiscMoveCommand";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin, input);
     }
 
@@ -658,6 +702,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "SetUnitLabors";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin, input);
     }
 
@@ -673,6 +718,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "MovementSelectCommand";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin, input);
     }
 
@@ -688,6 +734,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "PassKeyboardEvent";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin, input);
     }
 
@@ -703,6 +750,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "rename";
         const method = "RenameBuilding";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin, input);
     }
 
@@ -718,6 +766,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "rename";
         const method = "RenameSquad";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin, input);
     }
 
@@ -733,6 +782,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "rename";
         const method = "RenameUnit";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin, input);
     }
 
@@ -748,6 +798,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "SendDigCommand";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin, input);
     }
 
@@ -763,6 +814,7 @@ export class DFHackProtoBufferInterface {
         const plugin = 'RemoteFortressReader';
         const method = "SetSideMenu";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin, input);
     }
 
@@ -778,6 +830,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "GetBlockList";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin, input);
     }
 
@@ -793,6 +846,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "isoworldremote";
         const method = "GetEmbarkInfo";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin, input);
     }
 
@@ -808,6 +862,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "isoworldremote";
         const method = "GetEmbarkTile";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin, input);
     }
 
@@ -823,6 +878,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "GetPartialCreatureRaws";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin, input);
     }
 
@@ -838,6 +894,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "GetPartialPlantRaws";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin, input);
     }
 
@@ -853,6 +910,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "GetPlantList";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin, input);
     }
 
@@ -868,6 +926,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "isoworldremote";
         const method = "GetRawNames";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin, input);
     }
 
@@ -883,6 +942,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "RemoteFortressReader";
         const method = "GetUnitListInside";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin, input);
     }
 
@@ -898,6 +958,7 @@ export class DFHackProtoBufferInterface {
         const plugin = "dfproto";
         const method = "ListMaterials";
 
+        // @ts-ignore
         return await this._genericQueryMethod(inType, outType, method, plugin, input);
     }
 }
