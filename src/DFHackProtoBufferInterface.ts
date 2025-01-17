@@ -39,7 +39,7 @@ export class DFHackProtoBufferInterface {
         return bindReply.assignedId;
     }
 
-    private async _genericQueryMethod(inType: string, outType: string, method: string, plugin: string, input: unknown = {}):Promise<unknown> {
+    private async _genericQueryMethod(inType: string, outType: string, method: string, plugin: string, input: unknown = {}): Promise<{raw: Buffer, decoded: unknown}> {
         const inputMethod = root.lookupType(inType.split('.')[1]);
         const outputMethod = root.lookupType(outType.split('.')[1]);
 
@@ -50,8 +50,9 @@ export class DFHackProtoBufferInterface {
         const header = this.df.createHeader(methodId, buffer.length);
 
         const raw = await this.df.write(Buffer.concat([header, buffer]));
+        if (raw instanceof Error) throw raw;
         return {
-            raw,
+            raw: (raw as Buffer<ArrayBufferLike>),
             // @ts-ignore
             decoded: outputMethod.decode(raw),
         };
@@ -86,7 +87,7 @@ export class DFHackProtoBufferInterface {
      * @param args - An array of arguments for the command.
      * @returns A promise that resolves to an empty response.
      */
-    async runCommand(input: CoreRunCommandRequest): Promise<EmptyMessage> {
+    async runCommand(input: CoreRunCommandRequest): Promise<{raw: Buffer, decoded: EmptyMessage}> {
         const inType = 'dfproto.CoreRunCommandRequest';
         const outType = 'dfproto.EmptyMessage';
         const plugin = "dfproto";
@@ -100,7 +101,7 @@ export class DFHackProtoBufferInterface {
      * Suspends the DFHack core.
      * @returns A promise that resolves to an integer message.
      */
-    async coreSuspend(): Promise<IntMessage> {
+    async coreSuspend(): Promise<{raw: Buffer, decoded: IntMessage}> {
         const inType = 'dfproto.EmptyMessage';
         const outType = 'dfproto.IntMessage';
         const plugin = "dfproto";
@@ -114,7 +115,7 @@ export class DFHackProtoBufferInterface {
      * Resumes the DFHack core.
      * @returns A promise that resolves to an integer message.
      */
-    async coreResume(): Promise<IntMessage> {
+    async coreResume(): Promise<{raw: Buffer, decoded: IntMessage}> {
         const inType = 'dfproto.EmptyMessage';
         const outType = 'dfproto.IntMessage';
         const plugin = "dfproto";
@@ -131,7 +132,7 @@ export class DFHackProtoBufferInterface {
      * @param args - An array of arguments for the Lua function.
      * @returns A promise resolving to a list of strings returned by the Lua function.
      */
-    async runLua(input: CoreRunLuaRequest): Promise<StringListMessage> {
+    async runLua(input: CoreRunLuaRequest): Promise<{raw: Buffer, decoded: StringListMessage}> {
         const inType = 'dfproto.CoreRunLuaRequest';
         const outType = 'dfproto.StringListMessage';
         const plugin = "dfproto";
@@ -147,7 +148,7 @@ export class DFHackProtoBufferInterface {
      * @param value - True to pause the game, false to unpause.
      * @returns A promise resolving to an empty message.
      */
-    async setPauseState(input: SingleBool): Promise<EmptyMessage> {
+    async setPauseState(input: SingleBool): Promise<{raw: Buffer, decoded: EmptyMessage}> {
         const inType = 'RemoteFortressReader.SingleBool';
         const outType = 'dfproto.EmptyMessage';
         const plugin = "RemoteFortressReader";
@@ -162,7 +163,7 @@ export class DFHackProtoBufferInterface {
      * Gets the current pause state of the game.
      * @returns A promise resolving to the pause state (true or false).
      */
-    async getPauseState(): Promise<SingleBool> {
+    async getPauseState(): Promise<{raw: Buffer, decoded: SingleBool}> {
         const inType = 'dfproto.EmptyMessage';
         const outType = 'RemoteFortressReader.SingleBool';
         const plugin = "RemoteFortressReader";
@@ -176,7 +177,7 @@ export class DFHackProtoBufferInterface {
      * Checks the validity of the current game state.
      * @returns A promise resolving to a boolean indicating game validity.
      */
-    async getGameValidity(): Promise<SingleBool> {
+    async getGameValidity(): Promise<{raw: Buffer, decoded: SingleBool}> {
         const inType = 'dfproto.EmptyMessage';
         const outType = 'RemoteFortressReader.SingleBool';
         const plugin = "RemoteFortressReader";
@@ -190,7 +191,7 @@ export class DFHackProtoBufferInterface {
      * Gets the current version of DFHack.
      * @returns A promise resolving to the version string.
      */
-    async getVersion(): Promise<StringMessage> {
+    async getVersion(): Promise<{raw: Buffer, decoded: StringMessage}> {
         const inType = 'dfproto.EmptyMessage';
         const outType = 'dfproto.StringMessage';
         const plugin = "dfproto";
@@ -204,7 +205,7 @@ export class DFHackProtoBufferInterface {
      * Gets the current version of DFHack from RemoteFortressReader
      * @returns A promise resolving to the version string.
      */
-    async getVersion_RemoteFortressReader(): Promise<VersionInfo> {
+    async getVersion_RemoteFortressReader(): Promise<{raw: Buffer, decoded: VersionInfo}> {
         const inType = 'dfproto.EmptyMessage';
         const outType = 'RemoteFortressReader.VersionInfo';
         const plugin = "RemoteFortressReader";
@@ -218,7 +219,7 @@ export class DFHackProtoBufferInterface {
      * Gets the current version of Dwarf Fortress.
      * @returns A promise resolving to the version string.
      */
-    async getDFVersion(): Promise<StringMessage> {
+    async getDFVersion(): Promise<{raw: Buffer, decoded: StringMessage}> {
         const inType = 'dfproto.EmptyMessage';
         const outType = 'dfproto.StringMessage';
         const plugin = "dfproto";
@@ -233,7 +234,7 @@ export class DFHackProtoBufferInterface {
      * @param inParams - The parameters to filter units by, including masks and filters.
      * @returns A promise resolving to an array of units.
      */
-    async listUnits(input: ListUnitsIn): Promise<ListUnitsOut> {
+    async listUnits(input: ListUnitsIn): Promise<{raw: Buffer, decoded: ListUnitsOut}> {
         const inType = 'dfproto.ListUnitsIn';
         const outType = 'dfproto.ListUnitsOut';
         const plugin = "dfproto";
@@ -247,7 +248,7 @@ export class DFHackProtoBufferInterface {
      * Sets the labor state for units.
      * @returns A promise resolving to an empty message.
      */
-    async SetUnitLabors(input: SetUnitLaborsIn): Promise<EmptyMessage> {
+    async SetUnitLabors(input: SetUnitLaborsIn): Promise<{raw: Buffer, decoded: EmptyMessage}> {
         const inType = 'dfproto.SetUnitLaborsIn';
         const outType = 'dfproto.EmptyMessage';
         const plugin = "dfproto";
@@ -261,7 +262,7 @@ export class DFHackProtoBufferInterface {
      * Fetches the list of squads from DFHack.
      * @returns A promise resolving to the list of squads.
      */
-    async listSquads(input: ListSquadsIn): Promise<ListSquadsOut> {
+    async listSquads(input: ListSquadsIn): Promise<{raw: Buffer, decoded: ListSquadsOut}> {
         const inType = 'dfproto.ListSquadsIn';
         const outType = 'dfproto.ListSquadsOut';
         const plugin = 'dfproto';
@@ -276,7 +277,7 @@ export class DFHackProtoBufferInterface {
      * Checks hash validity.
      * @returns A promise resolving to an empty message.
      */
-    async checkHashes(): Promise<EmptyMessage> {
+    async checkHashes(): Promise<{raw: Buffer, decoded: EmptyMessage}> {
         const inType = 'dfproto.EmptyMessage';
         const outType = 'dfproto.EmptyMessage';
         const plugin = 'RemoteFortressReader';
@@ -290,7 +291,7 @@ export class DFHackProtoBufferInterface {
      * Copies the current screen.
      * @returns A promise resolving to a ScreenCapture message.
      */
-    async copyScreen(): Promise<ScreenCapture> {
+    async copyScreen(): Promise<{raw: Buffer, decoded: ScreenCapture}> {
         const inType = 'dfproto.EmptyMessage';
         const outType = 'RemoteFortressReader.ScreenCapture';
         const plugin = "RemoteFortressReader";
@@ -304,7 +305,7 @@ export class DFHackProtoBufferInterface {
      * Gets the list of building definitions.
      * @returns A promise resolving to a BuildingList message.
      */
-    async getBuildingDefList(): Promise<BuildingList> {
+    async getBuildingDefList(): Promise<{raw: Buffer, decoded: BuildingList}> {
         const inType = 'dfproto.EmptyMessage';
         const outType = 'RemoteFortressReader.BuildingList';
         const plugin = "RemoteFortressReader";
@@ -320,7 +321,7 @@ export class DFHackProtoBufferInterface {
      * Gets the creature raws.
      * @returns A promise resolving to a CreatureRawList message.
      */
-    async getCreatureRaws(): Promise<CreatureRawList> {
+    async getCreatureRaws(): Promise<{raw: Buffer, decoded: CreatureRawList}> {
         const inType = 'dfproto.EmptyMessage';
         const outType = 'RemoteFortressReader.CreatureRawList';
         const plugin = "RemoteFortressReader";
@@ -335,7 +336,7 @@ export class DFHackProtoBufferInterface {
      * Gets the list of growths.
      * @returns A promise resolving to a MaterialList message.
      */
-    async getGrowthList(): Promise<MaterialList> {
+    async getGrowthList(): Promise<{raw: Buffer, decoded: MaterialList}> {
         const inType = 'dfproto.EmptyMessage';
         const outType = 'RemoteFortressReader.MaterialList';
         const plugin = "RemoteFortressReader";
@@ -350,7 +351,7 @@ export class DFHackProtoBufferInterface {
      * Gets the list of items.
      * @returns A promise resolving to a MaterialList message.
      */
-    async getItemList(): Promise<EmptyMessage> {
+    async getItemList(): Promise<{raw: Buffer, decoded: EmptyMessage}> {
         const inType = 'dfproto.EmptyMessage';
         const outType = 'dfproto.EmptyMessage';
         const plugin = "MaterialList";
@@ -365,7 +366,7 @@ export class DFHackProtoBufferInterface {
      * Gets the language data.
      * @returns A promise resolving to a Language message.
      */
-    async getLanguage(): Promise<Language> {
+    async getLanguage(): Promise<{raw: Buffer, decoded: Language}> {
         const inType = 'dfproto.EmptyMessage';
         const outType = 'RemoteFortressReader.Language';
         const plugin = "RemoteFortressReader";
@@ -380,7 +381,7 @@ export class DFHackProtoBufferInterface {
      * Gets map information.
      * @returns A promise resolving to a MapInfo message.
      */
-    async getMapInfo(): Promise<MapInfo> {
+    async getMapInfo(): Promise<{raw: Buffer, decoded: MapInfo}> {
         const inType = 'dfproto.EmptyMessage';
         const outType = 'RemoteFortressReader.MapInfo';
         const plugin = "RemoteFortressReader";
@@ -395,7 +396,7 @@ export class DFHackProtoBufferInterface {
      * Gets the material list.
      * @returns A promise resolving to a MaterialList message.
      */
-    async getMaterialList(): Promise<MaterialList> {
+    async getMaterialList(): Promise<{raw: Buffer, decoded: MaterialList}> {
         const inType = 'dfproto.EmptyMessage';
         const outType = 'RemoteFortressReader.MaterialList';
         const plugin = "RemoteFortressReader";
@@ -410,7 +411,7 @@ export class DFHackProtoBufferInterface {
      * Gets the plant raws.
      * @returns A promise resolving to a PlantRawList message.
      */
-    async getPlantRaws(): Promise<PlantRawList> {
+    async getPlantRaws(): Promise<{raw: Buffer, decoded: PlantRawList}> {
         const inType = 'dfproto.EmptyMessage';
         const outType = 'RemoteFortressReader.PlantRawList';
         const plugin = "RemoteFortressReader";
@@ -427,7 +428,7 @@ export class DFHackProtoBufferInterface {
      * Gets the region maps.
      * @returns A promise resolving to a RegionMaps message.
      */
-    async getRegionMaps(): Promise<RegionMaps> {
+    async getRegionMaps(): Promise<{raw: Buffer, decoded: RegionMaps}> {
         const inType = 'dfproto.EmptyMessage';
         const outType = 'RemoteFortressReader.RegionMaps';
         const plugin = "RemoteFortressReader";
@@ -442,7 +443,7 @@ export class DFHackProtoBufferInterface {
      * Gets the new region maps.
      * @returns A promise resolving to a RegionMaps message.
      */
-    async getRegionMapsNew(): Promise<RegionMaps> {
+    async getRegionMapsNew(): Promise<{raw: Buffer, decoded: RegionMaps}> {
         const inType = 'dfproto.EmptyMessage';
         const outType = 'RemoteFortressReader.RegionMaps';
         const plugin = "RemoteFortressReader";
@@ -457,7 +458,7 @@ export class DFHackProtoBufferInterface {
      * Gets the game reports.
      * @returns A promise resolving to a Status message.
      */
-    async getReports(): Promise<Status> {
+    async getReports(): Promise<{raw: Buffer, decoded: Status}> {
         const inType = 'dfproto.EmptyMessage';
         const outType = 'RemoteFortressReader.Status';
         const plugin = "RemoteFortressReader";
@@ -472,7 +473,7 @@ export class DFHackProtoBufferInterface {
      * Gets the sidebar menu state.
      * @returns A promise resolving to a SidebarState message.
      */
-    async getSideMenu(): Promise<SidebarState> {
+    async getSideMenu(): Promise<{raw: Buffer, decoded: SidebarState}> {
         const inType = 'dfproto.EmptyMessage';
         const outType = 'RemoteFortressReader.SidebarState';
         const plugin = "RemoteFortressReader";
@@ -487,7 +488,7 @@ export class DFHackProtoBufferInterface {
      * Gets the tiletype list.
      * @returns A promise resolving to a TiletypeList message.
      */
-    async getTiletypeList(): Promise<TiletypeList> {
+    async getTiletypeList(): Promise<{raw: Buffer, decoded: TiletypeList}> {
         const inType = 'dfproto.EmptyMessage';
         const outType = 'RemoteFortressReader.TiletypeList';
         const plugin = "RemoteFortressReader";
@@ -502,7 +503,7 @@ export class DFHackProtoBufferInterface {
      * Gets the unit list.
      * @returns A promise resolving to a UnitList message.
      */
-    async getUnitList(): Promise<UnitList> {
+    async getUnitList(): Promise<{raw: Buffer, decoded: UnitList}> {
         const inType = 'dfproto.EmptyMessage';
         const outType = 'RemoteFortressReader.UnitList';
         const plugin = "RemoteFortressReader";
@@ -517,7 +518,7 @@ export class DFHackProtoBufferInterface {
      * Gets version information.
      * @returns A promise resolving to a VersionInfo message.
      */
-    async getVersionInfo(): Promise<VersionInfo> {
+    async getVersionInfo(): Promise<{raw: Buffer, decoded: VersionInfo}> {
         const inType = 'dfproto.EmptyMessage';
         const outType = 'RemoteFortressReader.VersionInfo';
         const plugin = "RemoteFortressReader";
@@ -532,7 +533,7 @@ export class DFHackProtoBufferInterface {
      * Gets view information.
      * @returns A promise resolving to a ViewInfo message.
      */
-    async getViewInfo(): Promise<ViewInfo> {
+    async getViewInfo(): Promise<{raw: Buffer, decoded: ViewInfo}> {
         const inType = 'dfproto.EmptyMessage';
         const outType = 'RemoteFortressReader.ViewInfo';
         const plugin = "RemoteFortressReader";
@@ -547,7 +548,7 @@ export class DFHackProtoBufferInterface {
      * Gets world information.
      * @returns A promise resolving to a GetWorldInfoOut message.
      */
-    async getWorldInfo(): Promise<GetWorldInfoOut> {
+    async getWorldInfo(): Promise<{raw: Buffer, decoded: GetWorldInfoOut}> {
         const inType = 'dfproto.EmptyMessage';
         const outType = 'dfproto.GetWorldInfoOut';
         const plugin = "dfproto";
@@ -562,7 +563,7 @@ export class DFHackProtoBufferInterface {
      * Gets the world map.
      * @returns A promise resolving to a WorldMap message.
      */
-    async getWorldMap(): Promise<WorldMap> {
+    async getWorldMap(): Promise<{raw: Buffer, decoded: WorldMap}> {
         const inType = 'dfproto.EmptyMessage';
         const outType = 'RemoteFortressReader.WorldMap';
         const plugin = "RemoteFortressReader";
@@ -577,7 +578,7 @@ export class DFHackProtoBufferInterface {
      * Gets the world map center.
      * @returns A promise resolving to a WorldMap message.
      */
-    async getWorldMapCenter(): Promise<WorldMap> {
+    async getWorldMapCenter(): Promise<{raw: Buffer, decoded: WorldMap}> {
         const inType = 'dfproto.EmptyMessage';
         const outType = 'RemoteFortressReader.WorldMap';
         const plugin = "RemoteFortressReader";
@@ -592,7 +593,7 @@ export class DFHackProtoBufferInterface {
      * Gets the new world map.
      * @returns A promise resolving to a WorldMap message.
      */
-    async getWorldMapNew(): Promise<WorldMap> {
+    async getWorldMapNew(): Promise<{raw: Buffer, decoded: WorldMap}> {
         const inType = 'dfproto.EmptyMessage';
         const outType = 'RemoteFortressReader.WorldMap';
         const plugin = "RemoteFortressReader";
@@ -607,7 +608,7 @@ export class DFHackProtoBufferInterface {
      * Lists all enums.
      * @returns A promise resolving to a ListEnumsOut message.
      */
-    async listEnums(): Promise<ListEnumsOut> {
+    async listEnums(): Promise<{raw: Buffer, decoded: ListEnumsOut}> {
         const inType = 'dfproto.EmptyMessage';
         const outType = 'dfproto.ListEnumsOut';
         const plugin = "dfproto";
@@ -622,7 +623,7 @@ export class DFHackProtoBufferInterface {
      * Lists all job skills.
      * @returns A promise resolving to a ListJobSkillsOut message.
      */
-    async listJobSkills(): Promise<ListJobSkillsOut> {
+    async listJobSkills(): Promise<{raw: Buffer, decoded: ListJobSkillsOut}> {
         const inType = 'dfproto.EmptyMessage';
         const outType = 'dfproto.ListJobSkillsOut';
         const plugin = "dfproto";
@@ -637,7 +638,7 @@ export class DFHackProtoBufferInterface {
      * Queries the current menu contents.
      * @returns A promise resolving to a MenuContents message.
      */
-    async menuQuery(): Promise<MenuContents> {
+    async menuQuery(): Promise<{raw: Buffer, decoded: MenuContents}> {
         const inType = 'dfproto.EmptyMessage';
         const outType = 'RemoteFortressReader.MenuContents';
         const plugin = "RemoteFortressReader";
@@ -652,7 +653,7 @@ export class DFHackProtoBufferInterface {
      * Resets the map hashes.
      * @returns A promise resolving to an empty message.
      */
-    async resetMapHashes(): Promise<EmptyMessage> {
+    async resetMapHashes(): Promise<{raw: Buffer, decoded: EmptyMessage}> {
         const inType = 'dfproto.EmptyMessage';
         const outType = 'dfproto.EmptyMessage';
         const plugin = "RemoteFortressReader";
@@ -668,7 +669,7 @@ export class DFHackProtoBufferInterface {
      * @param params - Parameters for the JumpCommand.
      * @returns A promise resolving to an empty message.
      */
-    async jumpCommand(input: MoveCommandParams): Promise<EmptyMessage> {
+    async jumpCommand(input: MoveCommandParams): Promise<{raw: Buffer, decoded: EmptyMessage}> {
         const inType = 'RemoteFortressReader.MoveCommandParams';
         const outType = 'dfproto.EmptyMessage';
         const plugin = "RemoteFortressReader";
@@ -684,7 +685,7 @@ export class DFHackProtoBufferInterface {
      * @param params - Parameters for the MiscMoveCommand.
      * @returns A promise resolving to an empty message.
      */
-    async miscMoveCommand(input: MiscMoveParams): Promise<EmptyMessage> {
+    async miscMoveCommand(input: MiscMoveParams): Promise<{raw: Buffer, decoded: EmptyMessage}> {
         const inType = 'RemoteFortressReader.MiscMoveParams';
         const outType = 'dfproto.EmptyMessage';
         const plugin = "RemoteFortressReader";
@@ -700,7 +701,7 @@ export class DFHackProtoBufferInterface {
      * @param params - Parameters for the MoveCommand.
      * @returns A promise resolving to an empty message.
      */
-    async moveCommand(input: MoveCommandParams): Promise<EmptyMessage> {
+    async moveCommand(input: MoveCommandParams): Promise<{raw: Buffer, decoded: EmptyMessage}> {
         const inType = 'RemoteFortressReader.MoveCommandParams';
         const outType = 'dfproto.EmptyMessage';
         const plugin = "RemoteFortressReader";
@@ -716,7 +717,7 @@ export class DFHackProtoBufferInterface {
      * @param params - An integer message.
      * @returns A promise resolving to an empty message.
      */
-    async movementSelectCommand(input: IntMessage): Promise<EmptyMessage> {
+    async movementSelectCommand(input: IntMessage): Promise<{raw: Buffer, decoded: EmptyMessage}> {
         const inType = 'dfproto.IntMessage';
         const outType = 'dfproto.EmptyMessage';
         const plugin = "RemoteFortressReader";
@@ -732,7 +733,7 @@ export class DFHackProtoBufferInterface {
      * @param event - The keyboard event.
      * @returns A promise resolving to an empty message.
      */
-    async passKeyboardEvent(input: KeyboardEvent): Promise<EmptyMessage> {
+    async passKeyboardEvent(input: KeyboardEvent): Promise<{raw: Buffer, decoded: EmptyMessage}> {
         const inType = 'RemoteFortressReader.KeyboardEvent';
         const outType = 'dfproto.EmptyMessage';
         const plugin = "RemoteFortressReader";
@@ -748,7 +749,7 @@ export class DFHackProtoBufferInterface {
      * @param params - Parameters for renaming a building.
      * @returns A promise resolving to an empty message.
      */
-    async renameBuilding(input: RenameBuildingIn): Promise<EmptyMessage> {
+    async renameBuilding(input: RenameBuildingIn): Promise<{raw: Buffer, decoded: EmptyMessage}> {
         const inType = 'rename.RenameBuildingIn';
         const outType = 'dfproto.EmptyMessage';
         const plugin = "rename";
@@ -764,7 +765,7 @@ export class DFHackProtoBufferInterface {
      * @param params - Parameters for renaming a squad.
      * @returns A promise resolving to an empty message.
      */
-    async renameSquad(input: RenameSquadIn): Promise<EmptyMessage> {
+    async renameSquad(input: RenameSquadIn): Promise<{raw: Buffer, decoded: EmptyMessage}> {
         const inType = 'rename.RenameSquadIn';
         const outType = 'dfproto.EmptyMessage';
         const plugin = "rename";
@@ -780,7 +781,7 @@ export class DFHackProtoBufferInterface {
      * @param params - Parameters for renaming a unit.
      * @returns A promise resolving to an empty message.
      */
-    async renameUnit(input: RenameUnitIn): Promise<EmptyMessage> {
+    async renameUnit(input: RenameUnitIn): Promise<{raw: Buffer, decoded: EmptyMessage}> {
         const inType = 'rename.RenameUnitIn';
         const outType = 'dfproto.EmptyMessage';
         const plugin = "rename";
@@ -796,7 +797,7 @@ export class DFHackProtoBufferInterface {
      * @param params - Parameters for the dig command.
      * @returns A promise resolving to an empty message.
      */
-    async sendDigCommand(input: DigCommand): Promise<EmptyMessage> {
+    async sendDigCommand(input: DigCommand): Promise<{raw: Buffer, decoded: EmptyMessage}> {
         const inType = 'RemoteFortressReader.DigCommand';
         const outType = 'dfproto.EmptyMessage';
         const plugin = "RemoteFortressReader";
@@ -812,7 +813,7 @@ export class DFHackProtoBufferInterface {
      * @param params - Parameters for the sidebar command.
      * @returns A promise resolving to an empty message.
      */
-    async setSideMenu(input: SidebarCommand): Promise<EmptyMessage> {
+    async setSideMenu(input: SidebarCommand): Promise<{raw: Buffer, decoded: EmptyMessage}> {
         const inType = 'RemoteFortressReader.SidebarCommand';
         const outType = 'dfproto.EmptyMessage';
         const plugin = 'RemoteFortressReader';
@@ -828,7 +829,7 @@ export class DFHackProtoBufferInterface {
      * @param params - Parameters for the BlockRequest.
      * @returns A promise resolving to a BlockList message.
      */
-    async getBlockList(input: BlockRequest): Promise<BlockList> {
+    async getBlockList(input: BlockRequest): Promise<{raw: Buffer, decoded: BlockList}> {
         const inType = 'RemoteFortressReader.BlockRequest';
         const outType = 'RemoteFortressReader.BlockList';
         const plugin = "RemoteFortressReader";
@@ -844,7 +845,7 @@ export class DFHackProtoBufferInterface {
      * @param params - Parameters for the MapRequest.
      * @returns A promise resolving to a MapReply message.
      */
-    async getEmbarkInfo(input: MapRequest): Promise<MapReply> {
+    async getEmbarkInfo(input: MapRequest): Promise<{raw: Buffer, decoded: MapReply}> {
         const inType = 'isoworldremote.MapRequest';
         const outType = 'isoworldremote.MapReply';
         const plugin = "isoworldremote";
@@ -860,7 +861,7 @@ export class DFHackProtoBufferInterface {
      * @param params - Parameters for the TileRequest.
      * @returns A promise resolving to an EmbarkTile message.
      */
-    async getEmbarkTile(input: TileRequest): Promise<EmbarkTile> {
+    async getEmbarkTile(input: TileRequest): Promise<{raw: Buffer, decoded: EmbarkTile}> {
         const inType = 'isoworldremote.TileRequest';
         const outType = 'isoworldremote.EmbarkTile';
         const plugin = "isoworldremote";
@@ -876,7 +877,7 @@ export class DFHackProtoBufferInterface {
      * @param params - Parameters for the ListRequest.
      * @returns A promise resolving to a CreatureRawList message.
      */
-    async getPartialCreatureRaws(input: ListRequest): Promise<CreatureRawList> {
+    async getPartialCreatureRaws(input: ListRequest): Promise<{raw: Buffer, decoded: CreatureRawList}> {
         const inType = 'RemoteFortressReader.ListRequest';
         const outType = 'RemoteFortressReader.CreatureRawList';
         const plugin = "RemoteFortressReader";
@@ -892,7 +893,7 @@ export class DFHackProtoBufferInterface {
      * @param params - Parameters for the ListRequest.
      * @returns A promise resolving to a PlantRawList message.
      */
-    async getPartialPlantRaws(input: ListRequest): Promise<PlantRawList> {
+    async getPartialPlantRaws(input: ListRequest): Promise<{raw: Buffer, decoded: PlantRawList}> {
         const inType = 'RemoteFortressReader.ListRequest';
         const outType = 'RemoteFortressReader.PlantRawList';
         const plugin = "RemoteFortressReader";
@@ -908,7 +909,7 @@ export class DFHackProtoBufferInterface {
      * @param params - Parameters for the BlockRequest.
      * @returns A promise resolving to a PlantList message.
      */
-    async getPlantList(input: BlockRequest): Promise<PlantList> {
+    async getPlantList(input: BlockRequest): Promise<{raw: Buffer, decoded: PlantList}> {
         const inType = 'RemoteFortressReader.BlockRequest';
         const outType = 'RemoteFortressReader.PlantList';
         const plugin = "RemoteFortressReader";
@@ -924,7 +925,7 @@ export class DFHackProtoBufferInterface {
      * @param params - Parameters for the MapRequest.
      * @returns A promise resolving to a RawNames message.
      */
-    async getRawNames(input: MapRequest): Promise<RawNames> {
+    async getRawNames(input: MapRequest): Promise<{raw: Buffer, decoded: RawNames}> {
         const inType = 'isoworldremote.MapRequest';
         const outType = 'isoworldremote.RawNames';
         const plugin = "isoworldremote";
@@ -940,7 +941,7 @@ export class DFHackProtoBufferInterface {
      * @param params - Parameters for the BlockRequest.
      * @returns A promise resolving to a UnitList message.
      */
-    async getUnitListInside(input: BlockRequest): Promise<UnitList> {
+    async getUnitListInside(input: BlockRequest): Promise<{raw: Buffer, decoded: UnitList}> {
         const inType = 'RemoteFortressReader.BlockRequest';
         const outType = 'RemoteFortressReader.UnitList';
         const plugin = "RemoteFortressReader";
@@ -956,7 +957,7 @@ export class DFHackProtoBufferInterface {
      * @param params - Parameters for the ListMaterialsIn.
      * @returns A promise resolving to a ListMaterialsOut message.
      */
-    async listMaterials(input: ListMaterialsIn): Promise<ListMaterialsOut> {
+    async listMaterials(input: ListMaterialsIn): Promise<{raw: Buffer, decoded: ListMaterialsOut}> {
         const inType = 'dfproto.ListMaterialsIn';
         const outType = 'dfproto.ListMaterialsOut';
         const plugin = "dfproto";
