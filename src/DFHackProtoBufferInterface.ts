@@ -49,8 +49,12 @@ export class DFHackProtoBufferInterface {
         const buffer = inputMethod.encode(inputMethod.create(input)).finish();
         const header = this.df.createHeader(methodId, buffer.length);
 
-        // @ts-ignore
-        return outputMethod.decode(await this.df.write(Buffer.concat([header, buffer])));
+        const raw = await this.df.write(Buffer.concat([header, buffer]));
+        return {
+            raw,
+            // @ts-ignore
+            decoded: outputMethod.decode(raw),
+        };
     }
 
     /**
