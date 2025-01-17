@@ -69,8 +69,6 @@ export class DFHackInterface {
                 const header = parsedData.header;
                 const packetData = (parsedData.remainder).slice(0, header.size);
                 const overflow = (parsedData.remainder).slice(header.size);
-                console.log(header, packetData, overflow);
-                console.log(header, packetData.toString(), overflow.toString());
 
                 if (header.id === responseId.RESULT) {
                     response = Buffer.concat([response, packetData]);
