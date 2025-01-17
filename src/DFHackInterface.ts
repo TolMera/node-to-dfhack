@@ -2,7 +2,8 @@ import net from 'node:net';
 
 export class DFHackInterface {
     connected: Promise<string> | undefined;
-    client: net.Socket | undefined;
+    // @ts-ignore
+    client: net.Socket;
     on: any; // Redefining this to any for now since the types are complex
 
     errorCodes = {
@@ -63,24 +64,33 @@ export class DFHackInterface {
                 QUIT: -4,
             };
 
-            const handler = (data: Buffer) => {
+            const handler = (data:Buffer) => {
                 const parsedData = this.getHeader(data);
+                const header = parsedData.header;
+                const packetData = (parsedData.remainder).slice(0, header.size);
+                const overflow = (parsedData.remainder).slice(header.size);
+                console.log(header, packetData, overflow);
+                console.log(header, packetData.toString(), overflow.toString());
 
-                if (parsedData.header.id === responseId.RESULT) {
-                    response = Buffer.concat([response, parsedData.remainder]);
-                    this.client!.off('data', handler); // Remove the listener    
+                if (header.id === responseId.RESULT) {
+                    response = Buffer.concat([response, packetData]);
+                    this.client.off('data', handler);
                     res(response);
                 }
-                else if (parsedData.header.id === responseId.TEXT) {
-                    response = Buffer.concat([response, parsedData.remainder]);
-                } else if (parsedData.header.id === responseId.FAIL) {
+                else if (header.id === responseId.TEXT) {
+                    response = Buffer.concat([response, packetData]);
+                }
+                else if (header.id === responseId.FAIL) {
+                    this.client.off('data', handler);
                     // @ts-ignore
-                    this.client!.off('data', handler); // Remove the listener    
-                    rej(parsedData);
-                } else {
-                    this.client!.off('data', handler); // Remove the listener    
+                    rej(this.errorCodes[header.size]);
+                }
+                else {
+                    this.client.off('data', handler);
                     rej(parsedData);
                 }
+
+                overflow.length && handler(overflow);
             };
 
             // Add listener to handle incoming data
