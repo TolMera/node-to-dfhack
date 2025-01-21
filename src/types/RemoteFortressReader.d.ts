@@ -145,76 +145,76 @@ export enum ArmorLayer {
 
 /** Representation of a coordinate */
 export interface Coord {
-    x?: number;
-    y?: number;
-    z?: number;
+    x?: number; /* x */
+    y?: number; /* y */
+    z?: number; /* z */
 }
 
 /** Representation of a tile type */
 export interface Tiletype {
-    id: number;
-    name?: string;
-    caption?: string;
-    shape?: TiletypeShape;
-    special?: TiletypeSpecial;
-    material?: TiletypeMaterial;
-    variant?: TiletypeVariant;
-    direction?: string;
+    id: number; /* id */
+    name?: string; /* name */
+    caption?: string; /* caption */
+    shape?: TiletypeShape; /* shape */
+    special?: TiletypeSpecial; /* special */
+    material?: TiletypeMaterial; /* material */
+    variant?: TiletypeVariant; /* variant */
+    direction?: string; /* direction */
 }
 
 /** List of tile types */
 export interface TiletypeList {
-    tiletype_list: Tiletype[];
+    tiletypeList: Tiletype[]; /* tiletype_list */
 }
 
 /** Representation of building extents */
 export interface BuildingExtents {
-    pos_x: number;
-    pos_y: number;
-    width: number;
-    height: number;
-    extents: number[];
+    posX: number; /* pos_x */
+    posY: number; /* pos_y */
+    width: number; /* width */
+    height: number; /* height */
+    extents: number[]; /* extents */
 }
 
 /** Representation of a building item */
 export interface BuildingItem {
-    item?: Item;
-    mode?: number;
+    item?: Item; /* item */
+    mode?: number; /* mode */
 }
 
 /** Representation of a building instance */
 export interface BuildingInstance {
-    index: number;
-    pos_x_min?: number;
-    pos_y_min?: number;
-    pos_z_min?: number;
-    pos_x_max?: number;
-    pos_y_max?: number;
-    pos_z_max?: number;
-    building_type?: BuildingType;
-    material?: MatPair;
-    building_flags?: number;
-    is_room?: boolean;
-    room?: BuildingExtents;
-    direction?: BuildingDirection;
-    items?: BuildingItem[];
-    active?: number;
+    index: number; /* index */
+    posXMin?: number; /* pos_x_min */
+    posYMin?: number; /* pos_y_min */
+    posZMin?: number; /* pos_z_min */
+    posXMax?: number; /* pos_x_max */
+    posYMax?: number; /* pos_y_max */
+    posZMax?: number; /* pos_z_max */
+    buildingType?: BuildingType; /* building_type */
+    material?: MatPair; /* material */
+    buildingFlags?: number; /* building_flags */
+    isRoom?: boolean; /* is_room */
+    room?: BuildingExtents; /* room */
+    direction?: BuildingDirection; /* direction */
+    items?: BuildingItem[]; /* items */
+    active?: number; /* active */
 }
 
 /** Representation of a river edge */
 export interface RiverEdge {
-    min_pos?: number;
-    max_pos?: number;
-    active?: number;
-    elevation?: number;
+    minPos?: number; /* min_pos */
+    maxPos?: number; /* max_pos */
+    active?: number; /* active */
+    elevation?: number; /* elevation */
 }
 
 /** Representation of a river tile */
 export interface RiverTile {
-    north?: RiverEdge;
-    south?: RiverEdge;
-    east?: RiverEdge;
-    west?: RiverEdge;
+    north?: RiverEdge; /* north */
+    south?: RiverEdge; /* south */
+    east?: RiverEdge; /* east */
+    west?: RiverEdge; /* west */
 }
 
 /** Enum for matter states */
@@ -229,411 +229,411 @@ export enum MatterState {
 
 /** Representation of spatter */
 export interface Spatter {
-    material?: MatPair;
-    amount?: number;
-    state?: MatterState;
-    item?: MatPair;
+    material?: MatPair; /* material */
+    amount?: number; /* amount */
+    state?: MatterState; /* state */
+    item?: MatPair; /* item */
 }
 
 /** Representation of a spatter pile */
 export interface SpatterPile {
-    spatters: Spatter[];
+    spatters: Spatter[]; /* spatters */
 }
 
 /** Representation of an item */
 export interface Item {
-    id?: number;
-    pos?: Coord;
-    flags1?: number;
-    flags2?: number;
-    type?: MatPair;
-    material?: MatPair;
-    dye?: ColorDefinition;
-    stack_size?: number;
-    subpos_x?: number;
-    subpos_y?: number;
-    subpos_z?: number;
-    projectile?: boolean;
-    velocity_x?: number;
-    velocity_y?: number;
-    velocity_z?: number;
-    volume?: number;
-    improvements?: ItemImprovement[];
-    image?: ArtImage;
+    id?: number; /* id */
+    pos?: Coord; /* pos */
+    flags1?: number; /* flags1 */
+    flags2?: number; /* flags2 */
+    type?: MatPair; /* type */
+    material?: MatPair; /* material */
+    dye?: ColorDefinition; /* dye */
+    stackSize?: number; /* stack_size */
+    subposX?: number; /* subpos_x */
+    subposY?: number; /* subpos_y */
+    subposZ?: number; /* subpos_z */
+    projectile?: boolean; /* projectile */
+    velocityX?: number; /* velocity_x */
+    velocityY?: number; /* velocity_y */
+    velocityZ?: number; /* velocity_z */
+    volume?: number; /* volume */
+    improvements?: ItemImprovement[]; /* improvements */
+    image?: ArtImage; /* image */
 }
 
 /** Representation of a plant tile */
 export interface PlantTile {
-    trunk?: boolean;
-    connection_east?: boolean;
-    connection_south?: boolean;
-    connection_west?: boolean;
-    connection_north?: boolean;
-    branches?: boolean;
-    twigs?: boolean;
-    tile_type?: TiletypeSpecial;
+    trunk?: boolean; /* trunk */
+    connectionEast?: boolean; /* connection_east */
+    connectionSouth?: boolean; /* connection_south */
+    connectionWest?: boolean; /* connection_west */
+    connectionNorth?: boolean; /* connection_north */
+    branches?: boolean; /* branches */
+    twigs?: boolean; /* twigs */
+    tileType?: TiletypeSpecial; /* tile_type */
 }
 
 /** Representation of tree information */
 export interface TreeInfo {
-    size?: Coord;
-    tiles?: PlantTile[];
+    size?: Coord; /* size */
+    tiles?: PlantTile[]; /* tiles */
 }
 
 /** Representation of a plant instance */
 export interface PlantInstance {
-    plant_type?: number;
-    pos?: Coord;
-    tree_info?: TreeInfo;
+    plantType?: number; /* plant_type */
+    pos?: Coord; /* pos */
+    treeInfo?: TreeInfo; /* tree_info */
 }
 
 /** Representation of a map block */
 export interface MapBlock {
-    map_x: number;
-    map_y: number;
-    map_z: number;
-    tiles: number[];
-    materials: MatPair[];
-    layer_materials: MatPair[];
-    vein_materials: MatPair[];
-    base_materials: MatPair[];
-    magma: number[];
-    water: number[];
-    hidden: boolean[];
-    light: boolean[];
-    subterranean: boolean[];
-    outside: boolean[];
-    aquifer: boolean[];
-    water_stagnant: boolean[];
-    water_salt: boolean[];
-    construction_items: MatPair[];
-    buildings: BuildingInstance[];
-    tree_percent: number[];
-    tree_x: number[];
-    tree_y: number[];
-    tree_z: number[];
-    tile_dig_designation: TileDigDesignation[];
-    spatterPile: SpatterPile[];
-    items: Item[];
-    tile_dig_designation_marker: boolean[];
-    tile_dig_designation_auto: boolean[];
-    grass_percent: number[];
-    flows: FlowInfo[];
+    mapX: number; /* map_x */
+    mapY: number; /* map_y */
+    mapZ: number; /* map_z */
+    tiles: number[]; /* tiles */
+    materials: MatPair[]; /* materials */
+    layerMaterials: MatPair[]; /* layer_materials */
+    veinMaterials: MatPair[]; /* vein_materials */
+    baseMaterials: MatPair[]; /* base_materials */
+    magma: number[]; /* magma */
+    water: number[]; /* water */
+    hidden: boolean[]; /* hidden */
+    light: boolean[]; /* light */
+    subterranean: boolean[]; /* subterranean */
+    outside: boolean[]; /* outside */
+    aquifer: boolean[]; /* aquifer */
+    waterStagnant: boolean[]; /* water_stagnant */
+    waterSalt: boolean[]; /* water_salt */
+    constructionItems: MatPair[]; /* construction_items */
+    buildings: BuildingInstance[]; /* buildings */
+    treePercent: number[]; /* tree_percent */
+    treeX: number[]; /* tree_x */
+    treeY: number[]; /* tree_y */
+    treeZ: number[]; /* tree_z */
+    tileDigDesignation: TileDigDesignation[]; /* tile_dig_designation */
+    spatterPile: SpatterPile[]; /* spatterPile */
+    items: Item[]; /* items */
+    tileDigDesignationMarker: boolean[]; /* tile_dig_designation_marker */
+    tileDigDesignationAuto: boolean[]; /* tile_dig_designation_auto */
+    grassPercent: number[]; /* grass_percent */
+    flows: FlowInfo[]; /* flows */
 }
 
 // TypeScript Type Definitions for Materials, Buildings, Units, and World Info
 
 /** Material Pair */
 export interface MatPair {
-    mat_type: number;
-    mat_index: number;
+    matType: number; /* mat_type */
+    matIndex: number; /* mat_index */
 }
 
 /** RGB Color Definition */
 export interface ColorDefinition {
-    red: number;
-    green: number;
-    blue: number;
+    red: number; /* red */
+    green: number; /* green */
+    blue: number; /* blue */
 }
 
 /** Material Definition */
 export interface MaterialDefinition {
-    mat_pair: MatPair;
-    id?: string;
-    name?: string;
-    state_color?: ColorDefinition;
-    instrument?: InstrumentDef;
-    up_step?: number;
-    down_step?: number;
-    layer?: ArmorLayer;
+    matPair: MatPair; /* mat_pair */
+    id?: string; /* id */
+    name?: string; /* name */
+    stateColor?: ColorDefinition; /* state_color */
+    instrument?: InstrumentDef; /* instrument */
+    upStep?: number; /* up_step */
+    downStep?: number; /* down_step */
+    layer?: ArmorLayer; /* layer */
 }
 
 /** Building Type */
 export interface BuildingType {
-    building_type: number;
-    building_subtype: number;
-    building_custom: number;
+    buildingType: number; /* building_type */
+    buildingSubtype: number; /* building_subtype */
+    buildingCustom: number; /* building_custom */
 }
 
 /** Building Definition */
 export interface BuildingDefinition {
-    building_type: BuildingType;
-    id?: string;
-    name?: string;
+    buildingType: BuildingType; /* building_type */
+    id?: string; /* id */
+    name?: string; /* name */
 }
 
 /** Building List */
 export interface BuildingList {
-    building_list: BuildingDefinition[];
+    buildingList: BuildingDefinition[]; /* building_list */
 }
 
 /** Material List */
 export interface MaterialList {
-    material_list: MaterialDefinition[];
+    materialList: MaterialDefinition[]; /* material_list */
 }
 
 /** Hair Definition */
 export interface Hair {
-    length?: number;
-    style?: HairStyle;
+    length?: number; /* length */
+    style?: HairStyle; /* style */
 }
 
 /** Body Size Information */
 export interface BodySizeInfo {
-    size_cur?: number;
-    size_base?: number;
-    area_cur?: number;
-    area_base?: number;
-    length_cur?: number;
-    length_base?: number;
+    sizeCur?: number; /* size_cur */
+    sizeBase?: number; /* size_base */
+    areaCur?: number; /* area_cur */
+    areaBase?: number; /* area_base */
+    lengthCur?: number; /* length_cur */
+    lengthBase?: number; /* length_base */
 }
 
 /** Unit Appearance */
 export interface UnitAppearance {
-    body_modifiers: number[];
-    bp_modifiers: number[];
-    size_modifier?: number;
-    colors: number[];
-    hair?: Hair;
-    beard?: Hair;
-    moustache?: Hair;
-    sideburns?: Hair;
-    physical_description?: string;
+    bodyModifiers: number[]; /* body_modifiers */
+    bpModifiers: number[]; /* bp_modifiers */
+    sizeModifier?: number; /* size_modifier */
+    colors: number[]; /* colors */
+    hair?: Hair; /* hair */
+    beard?: Hair; /* beard */
+    moustache?: Hair; /* moustache */
+    sideburns?: Hair; /* sideburns */
+    physicalDescription?: string; /* physical_description */
 }
 
 /** Inventory Item */
 export interface InventoryItem {
-    mode?: InventoryMode;
-    item?: Item;
-    body_part_id?: number;
+    mode?: InventoryMode; /* mode */
+    item?: Item; /* item */
+    bodyPartId?: number; /* body_part_id */
 }
 
 /** Wound Part */
 export interface WoundPart {
-    global_layer_idx?: number;
-    body_part_id?: number;
-    layer_idx?: number;
+    globalLayerIdx?: number; /* global_layer_idx */
+    bodyPartId?: number; /* body_part_id */
+    layerIdx?: number; /* layer_idx */
 }
 
 /** Unit Wound */
 export interface UnitWound {
-    parts: WoundPart[];
-    severed_part?: boolean;
+    parts: WoundPart[]; /* parts */
+    severedPart?: boolean; /* severed_part */
 }
 
 /** Unit Definition */
 export interface UnitDefinition {
-    id: number;
-    isValid?: boolean;
-    pos_x?: number;
-    pos_y?: number;
-    pos_z?: number;
-    race?: MatPair;
-    profession_color?: ColorDefinition;
-    flags1?: number;
-    flags2?: number;
-    flags3?: number;
-    is_soldier?: boolean;
-    size_info?: BodySizeInfo;
-    name?: string;
-    blood_max?: number;
-    blood_count?: number;
-    appearance?: UnitAppearance;
-    profession_id?: number;
-    noble_positions: string[];
-    rider_id?: number;
-    inventory: InventoryItem[];
-    subpos_x?: number;
-    subpos_y?: number;
-    subpos_z?: number;
-    facing?: Coord;
-    age?: number;
-    wounds: UnitWound[];
+    id: number; /* id */
+    isValid?: boolean; /* isValid */
+    posX?: number; /* pos_x */
+    posY?: number; /* pos_y */
+    posZ?: number; /* pos_z */
+    race?: MatPair; /* race */
+    professionColor?: ColorDefinition; /* profession_color */
+    flags1?: number; /* flags1 */
+    flags2?: number; /* flags2 */
+    flags3?: number; /* flags3 */
+    isSoldier?: boolean; /* is_soldier */
+    sizeInfo?: BodySizeInfo; /* size_info */
+    name?: string; /* name */
+    bloodMax?: number; /* blood_max */
+    bloodCount?: number; /* blood_count */
+    appearance?: UnitAppearance; /* appearance */
+    professionId?: number; /* profession_id */
+    noblePositions: string[]; /* noble_positions */
+    riderId?: number; /* rider_id */
+    inventory: InventoryItem[]; /* inventory */
+    subposX?: number; /* subpos_x */
+    subposY?: number; /* subpos_y */
+    subposZ?: number; /* subpos_z */
+    facing?: Coord; /* facing */
+    age?: number; /* age */
+    wounds: UnitWound[]; /* wounds */
 }
 
 /** Unit List */
 export interface UnitList {
-    creature_list: UnitDefinition[];
+    creatureList: UnitDefinition[]; /* creature_list */
 }
 
 /** Block Request */
 export interface BlockRequest {
-    blocks_needed?: number;
-    min_x?: number;
-    max_x?: number;
-    min_y?: number;
-    max_y?: number;
-    min_z?: number;
-    max_z?: number;
+    blocksNeeded?: number; /* blocks_needed */
+    minX?: number; /* min_x */
+    maxX?: number; /* max_x */
+    minY?: number; /* min_y */
+    maxY?: number; /* max_y */
+    minZ?: number; /* min_z */
+    maxZ?: number; /* max_z */
 }
 
 /** Block List */
 export interface BlockList {
-    map_blocks: MapBlock[];
-    map_x?: number;
-    map_y?: number;
-    engravings?: Engraving[];
-    ocean_waves?: Wave[];
+    mapBlocks: MapBlock[]; /* map_blocks */
+    mapX?: number; /* map_x */
+    mapY?: number; /* map_y */
+    engravings?: Engraving[]; /* engravings */
+    oceanWaves?: Wave[]; /* ocean_waves */
 }
 
 /** Plant Definition */
 export interface PlantDef {
-    pos_x: number;
-    pos_y: number;
-    pos_z: number;
-    index: number;
+    posX: number; /* pos_x */
+    posY: number; /* pos_y */
+    posZ: number; /* pos_z */
+    index: number; /* index */
 }
 
 /** Plant List */
 export interface PlantList {
-    plant_list: PlantDef[];
+    plantList: PlantDef[]; /* plant_list */
 }
 
 /** View Information */
 export interface ViewInfo {
-    view_pos_x?: number;
-    view_pos_y?: number;
-    view_pos_z?: number;
-    view_size_x?: number;
-    view_size_y?: number;
-    cursor_pos_x?: number;
-    cursor_pos_y?: number;
-    cursor_pos_z?: number;
-    follow_unit_id?: number;
-    follow_item_id?: number;
+    viewPosX?: number; /* view_pos_x */
+    viewPosY?: number; /* view_pos_y */
+    viewPosZ?: number; /* view_pos_z */
+    viewSizeX?: number; /* view_size_x */
+    viewSizeY?: number; /* view_size_y */
+    cursorPosX?: number; /* cursor_pos_x */
+    cursorPosY?: number; /* cursor_pos_y */
+    cursorPosZ?: number; /* cursor_pos_z */
+    followUnitId?: number; /* follow_unit_id */
+    followItemId?: number; /* follow_item_id */
 }
 
 /** Map Information */
 export interface MapInfo {
-    block_size_x?: number;
-    block_size_y?: number;
-    block_size_z?: number;
-    block_pos_x?: number;
-    block_pos_y?: number;
-    block_pos_z?: number;
-    world_name?: string;
-    world_name_english?: string;
-    save_name?: string;
+    blockSizeX?: number; /* block_size_x */
+    blockSizeY?: number; /* block_size_y */
+    blockSizeZ?: number; /* block_size_z */
+    blockPosX?: number; /* block_pos_x */
+    blockPosY?: number; /* block_pos_y */
+    blockPosZ?: number; /* block_pos_z */
+    worldName?: string; /* world_name */
+    worldNameEnglish?: string; /* world_name_english */
+    saveName?: string; /* save_name */
 }
 
 /** Cloud Information */
 export interface Cloud {
-    front?: FrontType;
-    cumulus?: CumulusType;
-    cirrus?: boolean;
-    stratus?: StratusType;
-    fog?: FogType;
+    front?: FrontType; /* front */
+    cumulus?: CumulusType; /* cumulus */
+    cirrus?: boolean; /* cirrus */
+    stratus?: StratusType; /* stratus */
+    fog?: FogType; /* fog */
 }
 
 /** World Map */
 export interface WorldMap {
-    world_width: number;
-    world_height: number;
-    name?: string;
-    name_english?: string;
-    elevation: number[];
-    rainfall: number[];
-    vegetation: number[];
-    temperature: number[];
-    evilness: number[];
-    drainage: number[];
-    volcanism: number[];
-    savagery: number[];
-    clouds: Cloud[];
-    salinity: number[];
-    map_x?: number;
-    map_y?: number;
-    center_x?: number;
-    center_y?: number;
-    center_z?: number;
-    cur_year?: number;
-    cur_year_tick?: number;
-    world_poles?: WorldPoles;
-    river_tiles: RiverTile[];
-    water_elevation: number[];
-    region_tiles: RegionTile[];
+    worldWidth: number; /* world_width */
+    worldHeight: number; /* world_height */
+    name?: string; /* name */
+    nameEnglish?: string; /* name_english */
+    elevation: number[]; /* elevation */
+    rainfall: number[]; /* rainfall */
+    vegetation: number[]; /* vegetation */
+    temperature: number[]; /* temperature */
+    evilness: number[]; /* evilness */
+    drainage: number[]; /* drainage */
+    volcanism: number[]; /* volcanism */
+    savagery: number[]; /* savagery */
+    clouds: Cloud[]; /* clouds */
+    salinity: number[]; /* salinity */
+    mapX?: number; /* map_x */
+    mapY?: number; /* map_y */
+    centerX?: number; /* center_x */
+    centerY?: number; /* center_y */
+    centerZ?: number; /* center_z */
+    curYear?: number; /* cur_year */
+    curYearTick?: number; /* cur_year_tick */
+    worldPoles?: WorldPoles; /* world_poles */
+    riverTiles: RiverTile[]; /* river_tiles */
+    waterElevation: number[]; /* water_elevation */
+    regionTiles: RegionTile[]; /* region_tiles */
 }
 
 /** Site Realization Building Wall */
 export interface SiteRealizationBuildingWall {
-    start_x?: number;
-    start_y?: number;
-    start_z?: number;
-    end_x?: number;
-    end_y?: number;
-    end_z?: number;
+    startX?: number; /* start_x */
+    startY?: number; /* start_y */
+    startZ?: number; /* start_z */
+    endX?: number; /* end_x */
+    endY?: number; /* end_y */
+    endZ?: number; /* end_z */
 }
 
 /** Site Realization Building Tower */
 export interface SiteRealizationBuildingTower {
-    roof_z?: number;
-    round?: boolean;
-    goblin?: boolean;
+    roofZ?: number; /* roof_z */
+    round?: boolean; /* round */
+    goblin?: boolean; /* goblin */
 }
 
 // TypeScript Definitions for Region, Creature, and Growth Data
 
 /** Representation of a trench spoke */
 export interface TrenchSpoke {
-    mound_start?: number;
-    trench_start?: number;
-    trench_end?: number;
-    mound_end?: number;
+    moundStart?: number; /* mound_start */
+    trenchStart?: number; /* trench_start */
+    trenchEnd?: number; /* trench_end */
+    moundEnd?: number; /* mound_end */
 }
 
 /** Realization of building trenches */
 export interface SiteRealizationBuildingTrenches {
-    spokes: TrenchSpoke[];
+    spokes: TrenchSpoke[]; /* spokes */
 }
 
 /** Realization of a site building */
 export interface SiteRealizationBuilding {
-    id?: number;
-    min_x?: number;
-    min_y?: number;
-    max_x?: number;
-    max_y?: number;
-    material?: MatPair;
-    wall_info?: SiteRealizationBuildingWall;
-    tower_info?: SiteRealizationBuildingTower;
-    trench_info?: SiteRealizationBuildingTrenches;
-    type?: number;
+    id?: number; /* id */
+    minX?: number; /* min_x */
+    minY?: number; /* min_y */
+    maxX?: number; /* max_x */
+    maxY?: number; /* max_y */
+    material?: MatPair; /* material */
+    wallInfo?: SiteRealizationBuildingWall; /* wall_info */
+    towerInfo?: SiteRealizationBuildingTower; /* tower_info */
+    trenchInfo?: SiteRealizationBuildingTrenches; /* trench_info */
+    type?: number; /* type */
 }
 
 /** Representation of a region tile */
 export interface RegionTile {
-    elevation?: number;
-    rainfall?: number;
-    vegetation?: number;
-    temperature?: number;
-    evilness?: number;
-    drainage?: number;
-    volcanism?: number;
-    savagery?: number;
-    salinity?: number;
-    river_tiles?: RiverTile;
-    water_elevation?: number;
-    surface_material?: MatPair;
-    plant_materials: MatPair[];
-    buildings: SiteRealizationBuilding[];
-    stone_materials: MatPair[];
-    tree_materials: MatPair[];
-    snow?: number;
+    elevation?: number; /* elevation */
+    rainfall?: number; /* rainfall */
+    vegetation?: number; /* vegetation */
+    temperature?: number; /* temperature */
+    evilness?: number; /* evilness */
+    drainage?: number; /* drainage */
+    volcanism?: number; /* volcanism */
+    savagery?: number; /* savagery */
+    salinity?: number; /* salinity */
+    riverTiles?: RiverTile; /* river_tiles */
+    waterElevation?: number; /* water_elevation */
+    surfaceMaterial?: MatPair; /* surface_material */
+    plantMaterials: MatPair[]; /* plant_materials */
+    buildings: SiteRealizationBuilding[]; /* buildings */
+    stoneMaterials: MatPair[]; /* stone_materials */
+    treeMaterials: MatPair[]; /* tree_materials */
+    snow?: number; /* snow */
 }
 
 /** Representation of a region map */
 export interface RegionMap {
-    map_x?: number;
-    map_y?: number;
-    name?: string;
-    name_english?: string;
-    tiles: RegionTile[];
+    mapX?: number; /* map_x */
+    mapY?: number; /* map_y */
+    name?: string; /* name */
+    nameEnglish?: string; /* name_english */
+    tiles: RegionTile[]; /* tiles */
 }
 
 /** Representation of region maps */
 export interface RegionMaps {
-    world_maps: WorldMap[];
-    region_maps: RegionMap[];
+    worldMaps: WorldMap[]; /* world_maps */
+    regionMaps: RegionMap[]; /* region_maps */
 }
 
 /** Enum for pattern types */
@@ -648,231 +648,231 @@ export enum PatternType {
 
 /** Descriptor for patterns */
 export interface PatternDescriptor {
-    id?: string;
-    colors: ColorDefinition[];
-    pattern?: PatternType;
+    id?: string; /* id */
+    colors: ColorDefinition[]; /* colors */
+    pattern?: PatternType; /* pattern */
 }
 
 /** Raw color modifier */
 export interface ColorModifierRaw {
-    patterns: PatternDescriptor[];
-    body_part_id: number[];
-    tissue_layer_id: number[];
-    start_date?: number;
-    end_date?: number;
-    part?: string;
+    patterns: PatternDescriptor[]; /* patterns */
+    bodyPartId: number[]; /* body_part_id */
+    tissueLayerId: number[]; /* tissue_layer_id */
+    startDate?: number; /* start_date */
+    endDate?: number; /* end_date */
+    part?: string; /* part */
 }
 
 /** Raw body part layer */
 export interface BodyPartLayerRaw {
-    layer_name?: string;
-    tissue_id?: number;
-    layer_depth?: number;
-    bp_modifiers: number[];
+    layerName?: string; /* layer_name */
+    tissueId?: number; /* tissue_id */
+    layerDepth?: number; /* layer_depth */
+    bpModifiers: number[]; /* bp_modifiers */
 }
 
 /** Raw body part */
 export interface BodyPartRaw {
-    token?: string;
-    category?: string;
-    parent?: number;
-    flags: boolean[];
-    layers: BodyPartLayerRaw[];
-    relsize?: number;
+    token?: string; /* token */
+    category?: string; /* category */
+    parent?: number; /* parent */
+    flags: boolean[]; /* flags */
+    layers: BodyPartLayerRaw[]; /* layers */
+    relsize?: number; /* relsize */
 }
 
 /** Modifier for body part appearance */
 export interface BpAppearanceModifier {
-    type?: string;
-    mod_min?: number;
-    mod_max?: number;
+    type?: string; /* type */
+    modMin?: number; /* mod_min */
+    modMax?: number; /* mod_max */
 }
 
 /** Raw tissue definition */
 export interface TissueRaw {
-    id?: string;
-    name?: string;
-    material?: MatPair;
-    subordinate_to_tissue?: string;
+    id?: string; /* id */
+    name?: string; /* name */
+    material?: MatPair; /* material */
+    subordinateToTissue?: string; /* subordinate_to_tissue */
 }
 
 /** Raw caste definition */
 export interface CasteRaw {
-    index?: number;
-    caste_id?: string;
-    caste_name: string[];
-    baby_name: string[];
-    child_name: string[];
-    gender?: number;
-    body_parts: BodyPartRaw[];
-    total_relsize?: number;
-    modifiers: BpAppearanceModifier[];
-    modifier_idx: number[];
-    part_idx: number[];
-    layer_idx: number[];
-    body_appearance_modifiers: BpAppearanceModifier[];
-    color_modifiers: ColorModifierRaw[];
-    description?: string;
-    adult_size?: number;
+    index?: number; /* index */
+    casteId?: string; /* caste_id */
+    casteName: string[]; /* caste_name */
+    babyName: string[]; /* baby_name */
+    childName: string[]; /* child_name */
+    gender?: number; /* gender */
+    bodyParts: BodyPartRaw[]; /* body_parts */
+    totalRelsize?: number; /* total_relsize */
+    modifiers: BpAppearanceModifier[]; /* modifiers */
+    modifierIdx: number[]; /* modifier_idx */
+    partIdx: number[]; /* part_idx */
+    layerIdx: number[]; /* layer_idx */
+    bodyAppearanceModifiers: BpAppearanceModifier[]; /* body_appearance_modifiers */
+    colorModifiers: ColorModifierRaw[]; /* color_modifiers */
+    description?: string; /* description */
+    adultSize?: number; /* adult_size */
 }
 
 /** Raw creature definition */
 export interface CreatureRaw {
-    index?: number;
-    creature_id?: string;
-    name: string[];
-    general_baby_name: string[];
-    general_child_name: string[];
-    creature_tile?: number;
-    creature_soldier_tile?: number;
-    color?: ColorDefinition;
-    adultsize?: number;
-    caste: CasteRaw[];
-    tissues: TissueRaw[];
-    flags: boolean[];
+    index?: number; /* index */
+    creatureId?: string; /* creature_id */
+    name: string[]; /* name */
+    generalBabyName: string[]; /* general_baby_name */
+    generalChildName: string[]; /* general_child_name */
+    creatureTile?: number; /* creature_tile */
+    creatureSoldierTile?: number; /* creature_soldier_tile */
+    color?: ColorDefinition; /* color */
+    adultsize?: number; /* adultsize */
+    caste: CasteRaw[]; /* caste */
+    tissues: TissueRaw[]; /* tissues */
+    flags: boolean[]; /* flags */
 }
 
 /** List of raw creatures */
 export interface CreatureRawList {
-    creature_raws: CreatureRaw[];
+    creatureRaws: CreatureRaw[]; /* creature_raws */
 }
 
 /** Representation of an army */
 export interface Army {
-    id?: number;
-    pos_x?: number;
-    pos_y?: number;
-    pos_z?: number;
-    leader?: UnitDefinition;
-    members: UnitDefinition[];
-    flags?: number;
+    id?: number; /* id */
+    posX?: number; /* pos_x */
+    posY?: number; /* pos_y */
+    posZ?: number; /* pos_z */
+    leader?: UnitDefinition; /* leader */
+    members: UnitDefinition[]; /* members */
+    flags?: number; /* flags */
 }
 
 /** List of armies */
 export interface ArmyList {
-    armies: Army[];
+    armies: Army[]; /* armies */
 }
 
 /** Representation of growth print */
 export interface GrowthPrint {
-    priority?: number;
-    color?: number;
-    timing_start?: number;
-    timing_end?: number;
-    tile?: number;
+    priority?: number; /* priority */
+    color?: number; /* color */
+    timingStart?: number; /* timing_start */
+    timingEnd?: number; /* timing_end */
+    tile?: number; /* tile */
 }
 
 /** Representation of tree growth */
 export interface TreeGrowth {
-    index?: number;
-    id?: string;
-    name?: string;
-    mat?: MatPair;
-    prints: GrowthPrint[];
-    timing_start?: number;
-    timing_end?: number;
-    twigs?: boolean;
-    light_branches?: boolean;
-    heavy_branches?: boolean;
-    trunk?: boolean;
-    roots?: boolean;
-    cap?: boolean;
-    sapling?: boolean;
-    trunk_height_start?: number;
-    trunk_height_end?: number;
+    index?: number; /* index */
+    id?: string; /* id */
+    name?: string; /* name */
+    mat?: MatPair; /* mat */
+    prints: GrowthPrint[]; /* prints */
+    timingStart?: number; /* timing_start */
+    timingEnd?: number; /* timing_end */
+    twigs?: boolean; /* twigs */
+    lightBranches?: boolean; /* light_branches */
+    heavyBranches?: boolean; /* heavy_branches */
+    trunk?: boolean; /* trunk */
+    roots?: boolean; /* roots */
+    cap?: boolean; /* cap */
+    sapling?: boolean; /* sapling */
+    trunkHeightStart?: number; /* trunk_height_start */
+    trunkHeightEnd?: number; /* trunk_height_end */
 }
 
 /** Raw plant definition */
 export interface PlantRaw {
-    index?: number;
-    id?: string;
-    name?: string;
-    growths: TreeGrowth[];
-    tile?: number;
+    index?: number; /* index */
+    id?: string; /* id */
+    name?: string; /* name */
+    growths: TreeGrowth[]; /* growths */
+    tile?: number; /* tile */
 }
 
 /** List of raw plants */
 export interface PlantRawList {
-    plant_raws: PlantRaw[];
+    plantRaws: PlantRaw[]; /* plant_raws */
 }
 
 /** Representation of a screen tile */
 export interface ScreenTile {
-    character?: number;
-    foreground?: number;
-    background?: number;
+    character?: number; /* character */
+    foreground?: number; /* foreground */
+    background?: number; /* background */
 }
 
 export interface ScreenCapture {
-    width?: number;
-    height?: number;
-    tiles?: ScreenTile[];
+    width?: number; /* width */
+    height?: number; /* height */
+    tiles?: ScreenTile[]; /* tiles */
 }
 
 export interface KeyboardEvent {
-    type?: number;
-    which?: number;
-    state?: number;
-    scancode?: number;
-    sym?: number;
-    mod?: number;
-    unicode?: number;
+    type?: number; /* type */
+    which?: number; /* which */
+    state?: number; /* state */
+    scancode?: number; /* scancode */
+    sym?: number; /* sym */
+    mod?: number; /* mod */
+    unicode?: number; /* unicode */
 }
 
 export interface DigCommand {
-    designation?: TileDigDesignation;
-    locations?: Coord[];
+    designation?: TileDigDesignation; /* designation */
+    locations?: Coord[]; /* locations */
 }
 
 export interface SingleBool {
-    value?: boolean;
+    value?: boolean; /* value */
 }
 
 export interface VersionInfo {
-    dwarf_fortress_version?: string;
-    dfhack_version?: string;
-    remote_fortress_reader_version?: string;
+    dwarfFortressVersion?: string; /* dwarf_fortress_version */
+    dfhackVersion?: string; /* dfhack_version */
+    remoteFortressReaderVersion?: string; /* remote_fortress_reader_version */
 }
 
 export interface ListRequest {
-    list_start?: number;
-    list_end?: number;
+    listStart?: number; /* list_start */
+    listEnd?: number; /* list_end */
 }
 
 export interface Report {
-    type?: number;
-    text?: string;
-    color?: ColorDefinition;
-    duration?: number;
-    continuation?: boolean;
-    unconscious?: boolean;
-    announcement?: boolean;
-    repeat_count?: number;
-    pos?: Coord;
-    id?: number;
-    year?: number;
-    time?: number;
+    type?: number; /* type */
+    text?: string; /* text */
+    color?: ColorDefinition; /* color */
+    duration?: number; /* duration */
+    continuation?: boolean; /* continuation */
+    unconscious?: boolean; /* unconscious */
+    announcement?: boolean; /* announcement */
+    repeatCount?: number; /* repeat_count */
+    pos?: Coord; /* pos */
+    id?: number; /* id */
+    year?: number; /* year */
+    time?: number; /* time */
 }
 
 export interface Status {
-    reports?: Report[];
+    reports?: Report[]; /* reports */
 }
 
 export interface ShapeDescriptor {
-    id?: string;
-    tile?: number;
+    id?: string; /* id */
+    tile?: number; /* tile */
 }
 
 export interface Language {
-    shapes?: ShapeDescriptor[];
+    shapes?: ShapeDescriptor[]; /* shapes */
 }
 
 export interface ItemImprovement {
-    material?: MatPair;
-    shape?: number;
-    specific_type?: number;
-    image?: ArtImage;
-    type?: number;
+    material?: MatPair; /* material */
+    shape?: number; /* shape */
+    specificType?: number; /* specific_type */
+    image?: ArtImage; /* image */
+    type?: number; /* type */
 }
 
 export enum ArtImageElementType {
@@ -884,11 +884,11 @@ export enum ArtImageElementType {
 }
 
 export interface ArtImageElement {
-    count?: number;
-    type?: ArtImageElementType;
-    creature_item?: MatPair;
-    material?: MatPair;
-    id?: number;
+    count?: number; /* count */
+    type?: ArtImageElementType; /* type */
+    creatureItem?: MatPair; /* creature_item */
+    material?: MatPair; /* material */
+    id?: number; /* id */
 }
 
 export enum ArtImagePropertyType {
@@ -897,33 +897,33 @@ export enum ArtImagePropertyType {
 }
 
 export interface ArtImageProperty {
-    subject?: number;
-    object?: number;
-    verb?: ArtImageVerb;
-    type?: ArtImagePropertyType;
+    subject?: number; /* subject */
+    object?: number; /* object */
+    verb?: ArtImageVerb; /* verb */
+    type?: ArtImagePropertyType; /* type */
 }
 
 export interface ArtImage {
-    elements?: ArtImageElement[];
-    id?: MatPair;
-    properties?: ArtImageProperty[];
+    elements?: ArtImageElement[]; /* elements */
+    id?: MatPair; /* id */
+    properties?: ArtImageProperty[]; /* properties */
 }
 
 export interface Engraving {
-    pos?: Coord;
-    quality?: number;
-    tile?: number;
-    image?: ArtImage;
-    floor?: boolean;
-    west?: boolean;
-    east?: boolean;
-    north?: boolean;
-    south?: boolean;
-    hidden?: boolean;
-    northwest?: boolean;
-    northeast?: boolean;
-    southwest?: boolean;
-    southeast?: boolean;
+    pos?: Coord; /* pos */
+    quality?: number; /* quality */
+    tile?: number; /* tile */
+    image?: ArtImage; /* image */
+    floor?: boolean; /* floor */
+    west?: boolean; /* west */
+    east?: boolean; /* east */
+    north?: boolean; /* north */
+    south?: boolean; /* south */
+    hidden?: boolean; /* hidden */
+    northwest?: boolean; /* northwest */
+    northeast?: boolean; /* northeast */
+    southwest?: boolean; /* southwest */
+    southeast?: boolean; /* southeast */
 }
 
 export enum ArtImageVerb {
@@ -996,19 +996,19 @@ export enum FlowType {
 }
 
 export interface FlowInfo {
-    index?: number;
-    type?: FlowType;
-    density?: number;
-    pos?: Coord;
-    dest?: Coord;
-    expanding?: boolean;
-    reuse?: boolean;
-    guide_id?: number;
-    material?: MatPair;
-    item?: MatPair;
+    index?: number; /* index */
+    type?: FlowType; /* type */
+    density?: number; /* density */
+    pos?: Coord; /* pos */
+    dest?: Coord; /* dest */
+    expanding?: boolean; /* expanding */
+    reuse?: boolean; /* reuse */
+    guideId?: number; /* guide_id */
+    material?: MatPair; /* material */
+    item?: MatPair; /* item */
 }
 
 export interface Wave {
-    dest?: Coord;
-    pos?: Coord;
+    dest?: Coord; /* dest */
+    pos?: Coord; /* pos */
 }

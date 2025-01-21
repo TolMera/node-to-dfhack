@@ -2,20 +2,20 @@
 
 /** Input for renaming a squad */
 export interface RenameSquadIn {
-    squad_id: number; // Required field
-    nickname?: string; // Optional field
-    alias?: string; // Optional field
+    squadId: number; // Required field /* squad_id */
+    nickname?: string; // Optional field /* nickname */
+    alias?: string; // Optional field /* alias */
 }
 
 /** Input for renaming a unit */
 export interface RenameUnitIn {
-    unit_id: number; // Required field
-    nickname?: string; // Optional field
-    profession?: string; // Optional field
+    unitId: number; // Required field /* unit_id */
+    nickname?: string; // Optional field /* nickname */
+    profession?: string; // Optional field /* profession */
 }
 
 /** Input for renaming a building */
 export interface RenameBuildingIn {
-    building_id: number; // Required field
-    name?: string; // Optional field
+    buildingId: number; // Required field /* building_id */
+    name?: string; // Optional field /* name */
 }

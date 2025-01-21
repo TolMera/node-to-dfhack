@@ -39,64 +39,64 @@ export enum BuildSelectorStage {
  * State of the sidebar.
  */
 export interface SidebarState {
-    mode?: proto.enums.ui_sidebar_mode.ui_sidebar_mode;
-    menu_items?: MenuItem[];
-    build_selector?: BuildSelector;
+    mode?: proto.enums.ui_sidebar_mode.ui_sidebar_mode; /* mode */
+    menuItems?: MenuItem[]; /* menu_items */
+    buildSelector?: BuildSelector; /* build_selector */
 }
 
 /**
  * Representation of a menu item.
  */
 export interface MenuItem {
-    building_type?: RemoteFortressReader.BuildingType;
-    existing_count?: number;
-    build_category?: BuildCategory;
+    buildingType?: RemoteFortressReader.BuildingType; /* building_type */
+    existingCount?: number; /* existing_count */
+    buildCategory?: BuildCategory; /* build_category */
 }
 
 /**
  * Command for the sidebar.
  */
 export interface SidebarCommand {
-    mode?: proto.enums.ui_sidebar_mode.ui_sidebar_mode;
-    menu_index?: number;
-    action?: MenuAction;
-    selection_coord?: RemoteFortressReader.Coord;
+    mode?: proto.enums.ui_sidebar_mode.ui_sidebar_mode; /* mode */
+    menuIndex?: number; /* menu_index */
+    action?: MenuAction; /* action */
+    selectionCoord?: RemoteFortressReader.Coord; /* selection_coord */
 }
 
 /**
  * Representation of a build requirement choice.
  */
 export interface BuiildReqChoice {
-    distance?: number;
-    name?: string;
-    num_candidates?: number;
-    used_count?: number;
+    distance?: number; /* distance */
+    name?: string; /* name */
+    numCandidates?: number; /* num_candidates */
+    usedCount?: number; /* used_count */
 }
 
 /**
  * Representation of a build item requirement.
  */
 export interface BuildItemReq {
-    count_required?: number;
-    count_max?: number;
-    count_provided?: number;
+    countRequired?: number; /* count_required */
+    countMax?: number; /* count_max */
+    countProvided?: number; /* count_provided */
 }
 
 /**
  * Representation of the build selector.
  */
 export interface BuildSelector {
-    building_type?: RemoteFortressReader.BuildingType;
-    stage?: BuildSelectorStage;
-    choices?: BuiildReqChoice[];
-    sel_index?: number;
-    requirements?: BuildItemReq[];
-    req_index?: number;
-    errors?: string[];
-    radius_x_low?: number;
-    radius_y_low?: number;
-    radius_x_high?: number;
-    radius_y_high?: number;
-    cursor?: RemoteFortressReader.Coord;
-    tiles?: number[];
+    buildingType?: RemoteFortressReader.BuildingType; /* building_type */
+    stage?: BuildSelectorStage; /* stage */
+    choices?: BuiildReqChoice[]; /* choices */
+    selIndex?: number; /* sel_index */
+    requirements?: BuildItemReq[]; /* requirements */
+    reqIndex?: number; /* req_index */
+    errors?: string[]; /* errors */
+    radiusXLow?: number; /* radius_x_low */
+    radiusYLow?: number; /* radius_y_low */
+    radiusXHigh?: number; /* radius_x_high */
+    radiusYHigh?: number; /* radius_y_high */
+    cursor?: RemoteFortressReader.Coord; /* cursor */
+    tiles?: number[]; /* tiles */
 }

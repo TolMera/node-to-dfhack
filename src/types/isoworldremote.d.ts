@@ -39,67 +39,67 @@ export enum BasicShape {
  * Definition of a color.
  */
 export interface ColorDefinition {
-    red: number;
-    green: number;
-    blue: number;
+    red: number; /* red */
+    green: number; /* green */
+    blue: number; /* blue */
 }
 
 /**
  * Layer information for an embark tile.
  */
 export interface EmbarkTileLayer {
-    mat_type_table?: BasicMaterial[];
-    mat_subtype_table?: number[];
-    tile_shape_table?: BasicShape[];
-    tile_color_table?: ColorDefinition[];
+    matTypeTable?: BasicMaterial[]; /* mat_type_table */
+    matSubtypeTable?: number[]; /* mat_subtype_table */
+    tileShapeTable?: BasicShape[]; /* tile_shape_table */
+    tileColorTable?: ColorDefinition[]; /* tile_color_table */
 }
 
 /**
  * Representation of an embark tile.
  */
 export interface EmbarkTile {
-    world_x: number;
-    world_y: number;
-    world_z: number;
-    tile_layer?: EmbarkTileLayer[];
-    current_year?: number;
-    current_season?: number;
-    is_valid?: boolean;
+    worldX: number; /* world_x */
+    worldY: number; /* world_y */
+    worldZ: number; /* world_z */
+    tileLayer?: EmbarkTileLayer[]; /* tile_layer */
+    currentYear?: number; /* current_year */
+    currentSeason?: number; /* current_season */
+    isValid?: boolean; /* is_valid */
 }
 
 /**
  * Request for tile information.
  */
 export interface TileRequest {
-    want_x?: number;
-    want_y?: number;
+    wantX?: number; /* want_x */
+    wantY?: number; /* want_y */
 }
 
 /**
  * Request for map information.
  */
 export interface MapRequest {
-    save_folder?: string;
+    saveFolder?: string; /* save_folder */
 }
 
 /**
  * Reply for map information.
  */
 export interface MapReply {
-    available: boolean;
-    region_x?: number;
-    region_y?: number;
-    region_size_x?: number;
-    region_size_y?: number;
-    current_year?: number;
-    current_season?: number;
+    available: boolean; /* available */
+    regionX?: number; /* region_x */
+    regionY?: number; /* region_y */
+    regionSizeX?: number; /* region_size_x */
+    regionSizeY?: number; /* region_size_y */
+    currentYear?: number; /* current_year */
+    currentSeason?: number; /* current_season */
 }
 
 /**
  * Raw names retrieved from a map.
  */
 export interface RawNames {
-    available: boolean;
-    inorganic?: string[];
-    organic?: string[];
+    available: boolean; /* available */
+    inorganic?: string[]; /* inorganic */
+    organic?: string[]; /* organic */
 }

@@ -87,32 +87,32 @@ export enum MiscMoveType {
  * Parameters for a move command.
  */
 export interface MoveCommandParams {
-    direction?: RemoteFortressReader.Coord;
+    direction?: RemoteFortressReader.Coord; /* direction */
 }
 
 /**
  * Options for movement.
  */
 export interface MovementOption {
-    dest?: RemoteFortressReader.Coord;
-    source?: RemoteFortressReader.Coord;
-    grab?: RemoteFortressReader.Coord;
-    movement_type?: CarefulMovementType;
+    dest?: RemoteFortressReader.Coord; /* dest */
+    source?: RemoteFortressReader.Coord; /* source */
+    grab?: RemoteFortressReader.Coord; /* grab */
+    movementType?: CarefulMovementType; /* movement_type */
 }
 
 /**
  * Contents of a menu.
  */
 export interface MenuContents {
-    current_menu?: AdvmodeMenu;
-    movements?: MovementOption[];
+    currentMenu?: AdvmodeMenu; /* current_menu */
+    movements?: MovementOption[]; /* movements */
 }
 
 /**
  * Parameters for a miscellaneous move command.
  */
 export interface MiscMoveParams {
-    type?: MiscMoveType;
+    type?: MiscMoveType; /* type */
 }
 
 /**
@@ -120,8 +120,8 @@ export interface MiscMoveParams {
  */
 export namespace RemoteFortressReader {
     export interface Coord {
-        x?: number;
-        y?: number;
-        z?: number;
+        x?: number; /* x */
+        y?: number; /* y */
+        z?: number; /* z */
     }
 }

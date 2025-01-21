@@ -6,15 +6,15 @@
  * Flags representing instrument properties.
  */
 export interface InstrumentFlags {
-    indefinite_pitch?: boolean;
-    placed_as_building?: boolean;
-    metal_mat?: boolean;
-    stone_mat?: boolean;
-    wood_mat?: boolean;
-    glass_mat?: boolean;
-    ceramic_mat?: boolean;
-    shell_mat?: boolean;
-    bone_mat?: boolean;
+    indefinitePitch?: boolean; /* indefinite_pitch */
+    placedAsBuilding?: boolean; /* placed_as_building */
+    metalMat?: boolean; /* metal_mat */
+    stoneMat?: boolean; /* stone_mat */
+    woodMat?: boolean; /* wood_mat */
+    glassMat?: boolean; /* glass_mat */
+    ceramicMat?: boolean; /* ceramic_mat */
+    shellMat?: boolean; /* shell_mat */
+    boneMat?: boolean; /* bone_mat */
 }
 
 /**
@@ -77,41 +77,41 @@ export enum TuningType {
  * Representation of an instrument piece.
  */
 export interface InstrumentPiece {
-    type?: string;
-    id?: string;
-    name?: string;
-    name_plural?: string;
+    type?: string; /* type */
+    id?: string; /* id */
+    name?: string; /* name */
+    namePlural?: string; /* name_plural */
 }
 
 /**
  * Representation of an instrument register.
  */
 export interface InstrumentRegister {
-    pitch_range_min?: number;
-    pitch_range_max?: number;
+    pitchRangeMin?: number; /* pitch_range_min */
+    pitchRangeMax?: number; /* pitch_range_max */
 }
 
 /**
  * Definition of an instrument.
  */
 export interface InstrumentDef {
-    flags?: InstrumentFlags;
-    size?: number;
-    value?: number;
-    material_size?: number;
-    pieces?: InstrumentPiece[];
-    pitch_range_min?: number;
-    pitch_range_max?: number;
-    volume_mb_min?: number;
-    volume_mb_max?: number;
-    sound_production?: SoundProductionType[];
-    sound_production_parm1?: string[];
-    sound_production_parm2?: string[];
-    pitch_choice?: PitchChoiceType[];
-    pitch_choice_parm1?: string[];
-    pitch_choice_parm2?: string[];
-    tuning?: TuningType[];
-    tuning_parm?: string[];
-    registers?: InstrumentRegister[];
-    description?: string;
+    flags?: InstrumentFlags; /* flags */
+    size?: number; /* size */
+    value?: number; /* value */
+    materialSize?: number; /* material_size */
+    pieces?: InstrumentPiece[]; /* pieces */
+    pitchRangeMin?: number; /* pitch_range_min */
+    pitchRangeMax?: number; /* pitch_range_max */
+    volumeMbMin?: number; /* volume_mb_min */
+    volumeMbMax?: number; /* volume_mb_max */
+    soundProduction?: SoundProductionType[]; /* sound_production */
+    soundProductionParm1?: string[]; /* sound_production_parm1 */
+    soundProductionParm2?: string[]; /* sound_production_parm2 */
+    pitchChoice?: PitchChoiceType[]; /* pitch_choice */
+    pitchChoiceParm1?: string[]; /* pitch_choice_parm1 */
+    pitchChoiceParm2?: string[]; /* pitch_choice_parm2 */
+    tuning?: TuningType[]; /* tuning */
+    tuningParm?: string[]; /* tuning_parm */
+    registers?: InstrumentRegister[]; /* registers */
+    description?: string; /* description */
 }

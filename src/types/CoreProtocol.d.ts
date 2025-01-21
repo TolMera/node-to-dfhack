@@ -6,8 +6,8 @@
  * Representation of a core text fragment.
  */
 export interface CoreTextFragment {
-    text: string;
-    color?:
+    text: string; /* text */
+    color?: /* color */
         | 'COLOR_BLACK'
         | 'COLOR_BLUE'
         | 'COLOR_GREEN'
@@ -30,14 +30,14 @@ export interface CoreTextFragment {
  * Notification containing core text fragments.
  */
 export interface CoreTextNotification {
-    fragments: CoreTextFragment[];
+    fragments: CoreTextFragment[]; /* fragments */
 }
 
 /**
  * Representation of a core error notification.
  */
 export interface CoreErrorNotification {
-    code:
+    code: /* code */
         | 'CR_LINK_FAILURE'
         | 'CR_WOULD_BREAK'
         | 'CR_NOT_IMPLEMENTED'
@@ -56,60 +56,60 @@ export interface EmptyMessage {}
  * Integer message.
  */
 export interface IntMessage {
-    value: number;
+    value: number; /* value */
 }
 
 /**
  * List of integers.
  */
 export interface IntListMessage {
-    value: number[];
+    value: number[]; /* value */
 }
 
 /**
  * String message.
  */
 export interface StringMessage {
-    value: string;
+    value: string; /* value */
 }
 
 /**
  * List of strings.
  */
 export interface StringListMessage {
-    value: string[];
+    value: string[]; /* value */
 }
 
 /**
  * Request to bind a core method.
  */
 export interface CoreBindRequest {
-    method: string;
-    input_msg: string;
-    output_msg: string;
-    plugin?: string;
+    method: string; /* method */
+    inputMsg: string; /* input_msg */
+    outputMsg: string; /* output_msg */
+    plugin?: string; /* plugin */
 }
 
 /**
  * Reply to a core bind request.
  */
 export interface CoreBindReply {
-    assigned_id: number;
+    assignedId: number; /* assigned_id */
 }
 
 /**
  * Request to run a core command.
  */
 export interface CoreRunCommandRequest {
-    command: string;
-    arguments: string[];
+    command: string; /* command */
+    arguments: string[]; /* arguments */
 }
 
 /**
  * Request to run a Lua function.
  */
 export interface CoreRunLuaRequest {
-    module: string;
-    function: string;
-    arguments: string[];
+    module: string; /* module */
+    function: string; /* function */
+    arguments: string[]; /* arguments */
 }

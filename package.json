@@ -1,6 +1,6 @@
 {
   "name": "node-remote-interface-dwarf-fortress",
-  "version": "0.1.5",
+  "version": "0.1.7",
   "description": "A Node.js interface for DFHack.",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
